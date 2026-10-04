@@ -25,7 +25,19 @@
       "image": ""
     }
   ],
-  "saleVehicles": [],
+  "saleVehicles": [
+    {
+      "id": "a84baec8-4486-4c5f-b991-5f9e74ef0ce1",
+      "title": "Nisan qaşqai",
+      "description": "Aracım hasarsız darbesiz temizdir",
+      "year": "2020",
+      "km": "70000",
+      "fuel": "dizel",
+      "transmission": "6",
+      "price": "300000",
+      "image": "images/sale/a84baec8-4486-4c5f-b991-5f9e74ef0ce1.jpeg"
+    }
+  ],
   "properties": [],
   "insurance": {
     "title": "Sigorta Çözümleri",
@@ -38,5 +50,6 @@
       "Seyahat Sigortası",
       "Diğer Sigortalar"
     ]
-  }
+  },
+  "_sha": "43f007eefd8a02b60da3fa41338f4a908e60039e"
 }
