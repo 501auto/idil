@@ -45,7 +45,8 @@
       "km": "70000",
       "fuel": "dizel",
       "transmission": "6",
-      "price": "300000"
+      "price": "300000",
+      "image": "images/sale/1396b834-caad-4fbc-bb90-376546f1f7de.jpeg"
     }
   ],
   "properties": [],
@@ -61,5 +62,5 @@
       "Diğer Sigortalar"
     ]
   },
-  "_sha": "43f007eefd8a02b60da3fa41338f4a908e60039e"
+  "_sha": "f174f9f29e5ce7989b9016301dec98dffae7c2b3"
 }
