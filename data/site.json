@@ -38,7 +38,19 @@
       "image": "images/sale/a84baec8-4486-4c5f-b991-5f9e74ef0ce1.jpeg"
     }
   ],
-  "properties": [],
+  "properties": [
+    {
+      "id": "afdabfde-8ca7-4c0e-b05d-afe3bc27f585",
+      "title": "3 + 1 daire",
+      "description": "",
+      "type": "Daire",
+      "area": "150",
+      "rooms": "3+1",
+      "floor": "3",
+      "location": "idil",
+      "image": "images/property/afdabfde-8ca7-4c0e-b05d-afe3bc27f585.jpeg"
+    }
+  ],
   "insurance": {
     "title": "Sigorta Çözümleri",
     "description": "Trafik sigortası, kasko, DASK, sağlık ve diğer sigorta ürünleri için teklif ve bilgi desteği.",
@@ -51,5 +63,5 @@
       "Diğer Sigortalar"
     ]
   },
-  "_sha": "43f007eefd8a02b60da3fa41338f4a908e60039e"
+  "_sha": "95f9890fe341adc21e2186f8e134a42ac6d1e37f"
 }
