@@ -43,7 +43,21 @@
       "price": "300000"
     }
   ],
-  "properties": [],
+  "properties": [
+    {
+      "id": "e6b1f489-d470-44d1-9269-87f6aeb57550",
+      "images": [
+        "images/property/e6b1f489-d470-44d1-9269-87f6aeb57550-1791146100933-0.jpg"
+      ],
+      "title": "3+1",
+      "description": "Daire sıfırdır Abdurrahman abay caddesinde yola bakan tarafıdır",
+      "type": "Daire",
+      "area": "150",
+      "rooms": "3+1",
+      "floor": "3",
+      "location": "İdil"
+    }
+  ],
   "insurance": {
     "title": "Sigorta Çözümleri",
     "description": "Trafik sigortası, kasko, DASK, sağlık ve diğer sigorta ürünleri için teklif ve bilgi desteği.",
@@ -56,7 +70,7 @@
       "Diğer Sigortalar"
     ]
   },
-  "_sha": "43f007eefd8a02b60da3fa41338f4a908e60039e",
+  "_sha": "ba2c13e4cd02885d584214ed656f4014ce9e5516",
   "media": [
     {
       "path": "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145233223-0.jpg",
@@ -73,6 +87,10 @@
     {
       "path": "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145240422-3.jpg",
       "name": "WhatsApp Image 2026-10-04 at 19.09.08.jpeg"
+    },
+    {
+      "path": "images/property/e6b1f489-d470-44d1-9269-87f6aeb57550-1791146100933-0.jpg",
+      "name": "temp_image_4007DFC9-C382-4720-99B6-123B3F832C99.webp"
     }
   ]
 }
