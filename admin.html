@@ -3,65 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>501 Yönetim Paneli</title>
+<title>501 Otomotiv — Yönetim Paneli</title>
 <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-<div id="login" class="login">
-  <div class="login-card">
-    <div class="logo"><b>501</b> YÖNETİM</div>
-    <p>501 Otomotiv - Rent a Car</p>
-    <label>Kullanıcı adı</label>
-    <input id="username" autocomplete="username" placeholder="Kullanıcı adı">
-    <label>Şifre</label>
-    <input id="password" type="password" autocomplete="current-password" placeholder="Şifre">
-    <button id="loginBtn">YÖNETİM PANELİNE GİR</button>
-    <small id="loginMessage"></small>
-  </div>
-</div>
+<div class="shell">
+  <header>
+    <div class="brand"><b>501</b><span>OTOMOTİV YÖNETİM</span></div>
+    <div id="connection" class="offline">● BAĞLANTI YOK</div>
+  </header>
 
-<div id="app" class="app hidden">
-  <aside>
-    <div class="aside-logo"><b>501</b><span>YÖNETİM</span></div>
-    <button class="menu active" data-page="dashboard">▦ Genel Bakış</button>
-    <button class="menu" data-page="rental">🚘 Kiralık Araçlar</button>
-    <button class="menu" data-page="sales">🚗 Satılık Araçlar</button>
-    <button class="menu" data-page="property">🏠 Emlak İlanları</button>
-    <button class="menu" data-page="business">⚙ İşletme Bilgileri</button>
-    <button id="logout" class="logout">Çıkış</button>
-  </aside>
+  <section id="setup" class="card setup">
+    <h1>GitHub bağlantısı</h1>
+    <p>Bu panel yalnızca yönetim amacıyla kullanılmalıdır. Tokenı dosyaya kaydetmez; tarayıcı sekmesi açıkken bellekte kullanır.</p>
+    <div class="grid">
+      <label>GitHub kullanıcı adı<input id="ghUser" value="501auto"></label>
+      <label>Repository<input id="ghRepo" value="idil"></label>
+      <label class="wide">Fine-grained token<input id="ghToken" type="password" autocomplete="off" placeholder="github_pat_..."></label>
+    </div>
+    <button id="connect">GitHub'a bağlan</button>
+    <p class="warning">⚠️ Tokenı GitHub repository'sine, HTML/JS dosyasına veya herkese açık bir yere yazma. Bu panel tokenı localStorage'a kaydetmez.</p>
+  </section>
 
-  <main>
-    <header><div><span>YÖNETİM PANELİ</span><h1 id="pageTitle">Genel Bakış</h1></div><div class="status">● SİSTEM HAZIR</div></header>
+  <main id="panel" class="hidden">
+    <aside>
+      <button class="tab active" data-tab="dashboard">▦ Genel Bakış</button>
+      <button class="tab" data-tab="rental">🚘 Kiralık Araç</button>
+      <button class="tab" data-tab="sales">🚗 Satılık Araç</button>
+      <button class="tab" data-tab="property">🏠 Emlak</button>
+      <button class="tab" data-tab="business">⚙ İşletme</button>
+    </aside>
 
-    <section id="dashboard" class="page">
-      <div class="stats">
-        <div><b id="rentalCount">0</b><span>Kiralık Araç</span></div>
-        <div><b id="saleCount">0</b><span>Satılık Araç</span></div>
-        <div><b id="propertyCount">0</b><span>Emlak İlanı</span></div>
-        <div><b>5</b><span>Aktif Hizmet</span></div>
+    <section class="content">
+      <div id="dashboard" class="page">
+        <h2>501 Otomotiv</h2>
+        <p class="muted">GitHub üzerindeki site verilerini buradan yönet.</p>
+        <div class="stats">
+          <div><b id="nRental">0</b><span>Kiralık araç</span></div>
+          <div><b id="nSales">0</b><span>Satılık araç</span></div>
+          <div><b id="nProperty">0</b><span>Emlak ilanı</span></div>
+        </div>
       </div>
-      <div class="welcome"><div>501</div><h2>İlanlarınızı tek yerden yönetin.</h2><p>Bu panel; kiralık araç, satılık araç, emlak ve işletme bilgilerini yönetmek için hazırlanmıştır.</p></div>
-    </section>
 
-    <section id="rental" class="page hidden"><div class="section-head"><div><span>KİRALAMA</span><h2>Kiralık Araçlar</h2></div><button class="add">+ Yeni Araç</button></div><div id="rentalList" class="list"></div></section>
-    <section id="sales" class="page hidden"><div class="section-head"><div><span>OTOMOTİV</span><h2>Satılık Araçlar</h2></div><button class="add">+ Yeni Araç</button></div><div id="salesList" class="list"></div></section>
-    <section id="property" class="page hidden"><div class="section-head"><div><span>EMLAK</span><h2>Emlak İlanları</h2></div><button class="add">+ Yeni İlan</button></div><div id="propertyList" class="list"></div></section>
+      <div id="rental" class="page hidden">
+        <div class="head"><h2>Kiralık Araçlar</h2><button class="primary" onclick="newItem('rentalVehicles')">+ Araç Ekle</button></div>
+        <div id="rentalList" class="items"></div>
+      </div>
 
-    <section id="business" class="page hidden">
-      <div class="section-head"><div><span>AYARLAR</span><h2>İşletme Bilgileri</h2></div></div>
-      <div class="form-card">
-        <label>İşletme adı</label><input id="companyName">
-        <label>Telefon</label><input id="companyPhone">
-        <label>WhatsApp</label><input id="companyWhatsapp">
-        <label>Adres</label><input id="companyAddress">
-        <label>Google Maps enlem</label><input id="lat" type="number" step="any">
-        <label>Google Maps boylam</label><input id="lng" type="number" step="any">
-        <button class="save">Bilgileri Hazırla</button>
-        <p class="notice">Bu sürümde kayıt işlemi henüz GitHub'a gönderilmiyor. 6. adımda güvenli GitHub yazma bağlantısı kurulacak.</p>
+      <div id="sales" class="page hidden">
+        <div class="head"><h2>Satılık Araçlar</h2><button class="primary" onclick="newItem('saleVehicles')">+ Araç Ekle</button></div>
+        <div id="salesList" class="items"></div>
+      </div>
+
+      <div id="property" class="page hidden">
+        <div class="head"><h2>Emlak İlanları</h2><button class="primary" onclick="newItem('properties')">+ İlan Ekle</button></div>
+        <div id="propertyList" class="items"></div>
+      </div>
+
+      <div id="business" class="page hidden">
+        <h2>İşletme Bilgileri</h2>
+        <div class="form">
+          <label>İşletme adı<input id="bizName"></label>
+          <label>Sahibi<input id="bizOwner"></label>
+          <label>Telefon<input id="bizPhone"></label>
+          <label>WhatsApp<input id="bizWhatsapp"></label>
+          <label class="wide">Adres<input id="bizAddress"></label>
+          <label>Enlem<input id="bizLat"></label>
+          <label>Boylam<input id="bizLng"></label>
+          <button class="primary wide" onclick="saveBusiness()">İşletme bilgilerini GitHub'a kaydet</button>
+        </div>
       </div>
     </section>
   </main>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modalbox">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle">İlan</h2>
+    <input type="hidden" id="itemType"><input type="hidden" id="itemId">
+    <div class="form">
+      <label>Başlık<input id="fTitle" placeholder="Örn. Renault Clio 1.0"></label>
+      <label>Fiyat<input id="fPrice" placeholder="Örn. 1.250 TL / gün"></label>
+      <label>Model / Yıl<input id="fModel" placeholder="Örn. 2024"></label>
+      <label>Kilometre<input id="fKm" placeholder="Örn. 45.000"></label>
+      <label class="wide">Açıklama<textarea id="fDesc" rows="5"></textarea></label>
+      <label class="wide">Fotoğraf<input id="fImage" type="file" accept="image/*"></label>
+      <img id="preview" class="preview hidden">
+      <button class="primary wide" onclick="saveItem()">GitHub'a kaydet / yayınla</button>
+    </div>
+  </div>
 </div>
 <script src="admin.js"></script>
 </body>
