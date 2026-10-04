@@ -25,7 +25,24 @@
       "image": ""
     }
   ],
-  "saleVehicles": [],
+  "saleVehicles": [
+    {
+      "id": "e7cc4c82-ebde-418a-b3c8-25a1fe601187",
+      "images": [
+        "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145233223-0.jpg",
+        "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145235715-1.jpg",
+        "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145238128-2.jpg",
+        "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145240422-3.jpg"
+      ],
+      "title": "Nisan qaşqai",
+      "description": "xdddas",
+      "year": "2020",
+      "km": "70000",
+      "fuel": "dizel",
+      "transmission": "6",
+      "price": "300000"
+    }
+  ],
   "properties": [],
   "insurance": {
     "title": "Sigorta Çözümleri",
@@ -38,5 +55,24 @@
       "Seyahat Sigortası",
       "Diğer Sigortalar"
     ]
-  }
+  },
+  "_sha": "43f007eefd8a02b60da3fa41338f4a908e60039e",
+  "media": [
+    {
+      "path": "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145233223-0.jpg",
+      "name": "2.jpeg"
+    },
+    {
+      "path": "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145235715-1.jpg",
+      "name": "dükkan resmi.jpeg"
+    },
+    {
+      "path": "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145238128-2.jpg",
+      "name": "kart vizit.jpeg"
+    },
+    {
+      "path": "images/sale/e7cc4c82-ebde-418a-b3c8-25a1fe601187-1791145240422-3.jpg",
+      "name": "WhatsApp Image 2026-10-04 at 19.09.08.jpeg"
+    }
+  ]
 }
