@@ -1,145 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="501 Otomotiv - Rent a Car | İdil, Şırnak">
-<title>501 Otomotiv - Rent a Car | İdil / Şırnak</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>501 Otomotiv | İdil Araç Kiralama, Sigorta, Emlak, Oto Kurtarma</title>
+<meta name="description" content="İdil merkez 501 Otomotiv: araç kiralama, araç alım satım, sigorta, emlak ve oto kurtarma. Cizre, Silopi, Dargeçit, Midyat ve Şırnak çevresine hizmet.">
+<meta name="keywords" content="İdil araç kiralama, İdil rent a car, İdil oto kiralama, İdil Şırnak araç kiralama, İdil merkez araç kiralama, Cizre araç kiralama, Silopi araç kiralama, Dargeçit araç kiralama, Midyat araç kiralama, Şırnak araç kiralama, İdil havaalanı araç kiralama, Şırnak havaalanı araç kiralama, İdil emlak, İdil sigorta, DASK İdil, trafik sigortası İdil, kasko İdil, İdil oto kurtarma, İdil çekici">
+<meta property="og:title" content="501 Otomotiv - İdil">
+<meta property="og:description" content="İdil merkez araç kiralama, sigorta, emlak, araç alım satım ve oto kurtarma.">
+<style>
+:root{--bg:#080b0f;--panel:#10151b;--panel2:#151b22;--line:#26303a;--text:#f4f6f8;--muted:#9aa5b1;--gold:#f4b400;--red:#e34b4b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}a{color:inherit}.wrap{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(8,11,15,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{font-weight:950;letter-spacing:.5px}.logo b{color:var(--gold);font-size:26px}.logo span{font-size:11px;color:#aab2bb;margin-left:8px;letter-spacing:1.5px}
+nav{display:flex;gap:4px}nav a{text-decoration:none;color:#aeb7c1;padding:10px 11px;border-radius:8px;font-size:13px}nav a:hover{background:var(--panel2);color:white}
+.hero{padding:72px 0 50px;background:radial-gradient(circle at 75% 10%,#24200e 0,#0b0e12 38%,#080b0f 72%)}.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:35px;align-items:center}.eyebrow{color:var(--gold);font-weight:900;font-size:11px;letter-spacing:2px}.hero h1{font-size:clamp(38px,6vw,72px);line-height:.98;margin:13px 0}.hero h1 em{font-style:normal;color:var(--gold)}.hero p{color:var(--muted);line-height:1.7;max-width:720px}.badge{display:inline-block;margin-top:8px;padding:9px 14px;border:1px solid #5b4710;background:#201a08;color:var(--gold);border-radius:999px;font-size:12px;font-weight:900}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:9px;padding:12px 17px;font-weight:850;border:1px solid var(--line)}.primary{background:var(--gold);color:#111;border-color:var(--gold)}.hero-card{border:1px solid #3b341d;background:linear-gradient(145deg,#17160f,#10151b);border-radius:18px;padding:25px}.hero-card strong{font-size:28px}.hero-card p{font-size:13px;margin:7px 0 0}
+.services{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}.service{padding:17px;border:1px solid var(--line);background:var(--panel);border-radius:12px;text-decoration:none}.service span{font-size:22px}.service b{display:block;margin-top:8px}.service small{color:var(--muted)}
+.section{padding:65px 0}.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:25px}.section-head h2{font-size:32px;margin:6px 0}.section-head p{color:var(--muted);max-width:650px;line-height:1.65;margin:0}.kicker{font-size:10px;color:var(--gold);font-weight:900;letter-spacing:1.7px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden}.card-img{height:190px;background:linear-gradient(135deg,#1a222b,#0d1116);display:grid;place-items:center;font-size:70px;position:relative}.card-img img{width:100%;height:100%;object-fit:cover}.tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#111;border-radius:999px;padding:6px 9px;font-size:9px;font-weight:950}.card-body{padding:18px}.card-body h3{margin:0 0 6px}.meta{color:#9aa5b1;font-size:12px;display:flex;gap:8px;flex-wrap:wrap}.price-row{display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--line);margin-top:15px;padding-top:13px}.price{font-weight:900;color:var(--gold)}.desc{color:#9aa5b1;font-size:13px;line-height:1.6}.empty{border:1px dashed #34404b;border-radius:15px;padding:35px;text-align:center;color:var(--muted)}
+.rental{background:linear-gradient(180deg,#0a1015,#0b1218)}.sales{background:linear-gradient(180deg,#0c0f12,#12120f)}.property{background:linear-gradient(180deg,#110f0c,#17120c)}.insurance{background:linear-gradient(180deg,#091318,#0a151a)}.rescue{background:radial-gradient(circle at 85% 20%,#3a1515,#0c0b0c 48%)}.contact{background:#090c10}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{padding:24px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}.feature .ico{font-size:30px}.feature h3{margin:12px 0 7px}.feature p{color:var(--muted);line-height:1.65;margin:0}
+.route-box{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:22px}.route-controls{display:grid;grid-template-columns:1fr auto;gap:10px}.route-controls input{min-width:0;background:#080b0f;border:1px solid var(--line);color:white;border-radius:9px;padding:13px}.route-result{display:none;margin-top:18px;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:17px;background:#0b1015;border:1px solid var(--line);border-radius:11px}.metric small{display:block;color:var(--muted);font-size:10px}.metric b{font-size:21px;color:var(--gold)}.map-link{display:none;margin-top:12px}.notice{font-size:11px;color:#75818d;margin-top:10px;line-height:1.5}
+.insurance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.contact-strip{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-top:22px;padding:18px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.03)}
+.seo{padding:45px 0;background:#070a0d;border-top:1px solid var(--line)}.seo p{color:#87929e;line-height:1.85;font-size:13px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#7e8995;font-size:12px}.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.designer{color:#aeb7c1}.designer a{color:var(--gold);text-decoration:none}
+@media(max-width:900px){nav{display:none}.hero-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.cards,.feature-grid,.insurance-grid{grid-template-columns:1fr 1fr}.route-result{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.hero{padding-top:45px}.services,.cards,.feature-grid,.insurance-grid{grid-template-columns:1fr}.section{padding:45px 0}.section-head{display:block}.route-controls{grid-template-columns:1fr}.route-result{grid-template-columns:1fr}.contact-strip{display:block}.contact-strip .btn{margin-top:12px}}
+</style>
 </head>
 <body>
+<header><div class="wrap nav"><a class="logo" href="#"><b>501</b><span>OTOMOTİV • RENT A CAR</span></a><nav><a href="#kiralama">Kiralama</a><a href="#satilik">Satılık</a><a href="#sigorta">Sigorta</a><a href="#emlak">Emlak</a><a href="#kurtarma">Kurtarma</a><a href="#iletisim">İletişim</a></nav></div></header>
 
-<header class="topbar">
-  <a class="logo" href="#">
-    <b>501</b><span>OTOMOTİV</span>
-  </a>
-  <nav>
-    <a href="#kiralama">Araç Kiralama</a>
-    <a href="#araclar">Araçlar</a>
-    <a href="#emlak">Emlak</a>
-    <a href="#kurtarma">Oto Kurtarma</a>
-    <a href="#mesafe">Mesafe Hesapla</a>
-    <a href="#iletisim">İletişim</a>
-  </nav>
-  <a class="header-call" href="tel:+905447673310">📞 0544 767 33 10</a>
-</header>
-
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-inner">
-    <div class="eyebrow">İDİL / ŞIRNAK</div>
-    <h1>501 <strong>OTOMOTİV</strong><br><span>- RENT A CAR -</span></h1>
-    <p>Otomotiv • Araç Kiralama • Sigorta • Emlak • Oto Kurtarma</p>
-    <div class="hero-buttons">
-      <a class="btn gold" href="#kiralama">🚘 Araç Kirala</a>
-      <a class="btn outline" href="#araclar">Araçlarımız</a>
-      <a class="btn whatsapp" href="https://wa.me/905447673310" target="_blank" rel="noopener">💬 WhatsApp</a>
-    </div>
+<main>
+<section class="hero"><div class="wrap">
+  <div class="hero-grid"><div>
+    <div class="eyebrow">İDİL / ŞIRNAK • 501 OTOMOTİV</div>
+    <h1>Aradığınız hizmet,<br><em>tek adreste.</em></h1>
+    <p>İdil merkezde araç kiralama, araç alım satım, sigorta, emlak ve oto kurtarma hizmetleri. Cizre, Silopi, Dargeçit, Midyat ve Şırnak çevresinden ulaşan müşteriler için hızlı iletişim.</p>
+    <span class="badge">💰 EN UYGUN FİYAT BİZDE</span>
+    <div class="hero-actions"><a class="btn primary" href="https://wa.me/905447673310" target="_blank">💬 WhatsApp'tan Ulaş</a><a class="btn" href="#mesafe">📍 İdil'e Mesafeni Hesapla</a></div>
+  </div><div class="hero-card"><div class="eyebrow">İLETİŞİM</div><strong>0544 767 33 10</strong><p>Genel iletişim • Araç kiralama • Araç alım satım</p><hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><strong>0544 250 71 73</strong><p>Emlak • Sigorta</p><hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><strong>0544 494 08 00</strong><p>Oto kurtarma • Çekici</p></div></div>
+  <div class="services">
+    <a class="service" href="#kiralama"><span>🚘</span><b>Araç Kiralama</b><small>Günlük / saatlik</small></a>
+    <a class="service" href="#satilik"><span>🚗</span><b>Satılık Araç</b><small>Güncel ilanlar</small></a>
+    <a class="service" href="#sigorta"><span>🛡️</span><b>Sigorta</b><small>DASK / Kasko</small></a>
+    <a class="service" href="#emlak"><span>🏠</span><b>Emlak</b><small>Satılık / kiralık</small></a>
+    <a class="service" href="#kurtarma"><span>🚨</span><b>Oto Kurtarma</b><small>7/24 iletişim</small></a>
   </div>
-  <div class="hero-info">
-    <span>📍</span>
-    <div><b>Yukarı Mah. Cizre Bulvarı No:272</b><small>İdil / Şırnak</small></div>
-  </div>
-</section>
+</div></section>
 
-<section class="quick">
-  <a href="#kiralama"><span>🚘</span><b>Araç Kiralama</b><small>Günlük / saatlik</small></a>
-  <a href="#araclar"><span>🚗</span><b>Araç Alım Satım</b><small>Güncel ilanlar</small></a>
-  <a href="#emlak"><span>🏠</span><b>Emlak</b><small>Satılık / kiralık</small></a>
-  <a href="#kurtarma"><span>🚨</span><b>Oto Kurtarma</b><small>7/24 destek</small></a>
-</section>
+<section id="kiralama" class="section rental"><div class="wrap"><div class="section-head"><div><div class="kicker">01 / RENT A CAR</div><h2>İdil araç kiralama</h2></div><p>Günlük, saatlik ve haftalık kiralama seçenekleri. Güncel araçlar, fiyatlar ve müsaitlik yönetim panelinden yayınlanır.</p></div><div id="rentalCards" class="cards"></div></div></section>
 
-<section id="kiralama" class="section">
-  <div class="heading"><label>501 / RENT A CAR</label><h2>İhtiyacınıza uygun <em>aracı kiralayın.</em></h2><p>Elimizde bulunan kiralık araçları, günlük ve saatlik ücretleri, uygunluk durumunu ve araç özelliklerini bu bölümden görebileceksiniz.</p></div>
-  <div class="cards">
-    <article class="empty-card"><div>🚘</div><h3>Kiralık Araçlar</h3><p>Yönetim paneli kurulduğunda araç fotoğrafları, model, yıl, vites, yakıt, günlük ve saatlik fiyat burada otomatik yayınlanacak.</p><a href="#iletisim">Bilgi Al →</a></article>
-    <article class="info-card"><div class="big">24/7</div><h3>Kolay Rezervasyon</h3><p>İstediğiniz araç için WhatsApp üzerinden hızlıca bilgi ve rezervasyon talebi gönderebilirsiniz.</p><a href="https://wa.me/905447673310" target="_blank">WhatsApp'tan Sor →</a></article>
-    <article class="info-card"><div class="big">501</div><h3>Güvenle Yola Çıkın</h3><p>İdil'den şehir içi ve şehir dışı ulaşım ihtiyaçlarınız için araç seçenekleri.</p></article>
-  </div>
-</section>
+<section id="satilik" class="section sales"><div class="wrap"><div class="section-head"><div><div class="kicker">02 / ARAÇ ALIM SATIM</div><h2>Satılık araçlar</h2></div><p>Model, yıl, kilometre, yakıt, vites, fiyat ve açıklama bilgileriyle güncel araç ilanları.</p></div><div id="saleCards" class="cards"></div></div></section>
 
-<section id="araclar" class="dark-section">
-  <div class="section heading"><label>02 / ARAÇ ALIM SATIM</label><h2>Güncel <em>araç ilanları.</em></h2><p>Satılık araçlar; fotoğrafları, fiyatları, kilometresi, model yılı ve açıklamalarıyla burada yayınlanacak.</p>
-    <div class="coming"><span>🚗</span><div><b>İlan sistemi hazırlanıyor</b><small>Yönetim panelinden ilan eklenince bu alan otomatik güncellenecek.</small></div></div>
-  </div>
-</section>
+<section id="sigorta" class="section insurance"><div class="wrap"><div class="section-head"><div><div class="kicker">03 / SİGORTA</div><h2>Sigorta hizmetleri</h2></div><p>Trafik sigortası, kasko, DASK, sağlık, seyahat ve diğer sigorta ürünleri için bilgi ve teklif desteği.</p></div>
+<div class="insurance-grid" id="insuranceCards"></div><div class="contact-strip"><div><b>Sigorta hattı</b><div style="color:var(--gold);font-size:20px;font-weight:900">0544 250 71 73</div></div><a class="btn primary" href="https://wa.me/905442507173" target="_blank">Teklif İste</a></div></div></section>
 
-<section id="emlak" class="section">
-  <div class="heading"><label>03 / EMLAK</label><h2>Satılık ve kiralık <em>gayrimenkuller.</em></h2><p>İlan fotoğrafları, konum, fiyat, oda sayısı, metrekare ve açıklama bilgileri yönetim panelinden eklenebilecek.</p></div>
-  <div class="property-empty">
-    <span>🏠</span><h3>Güncel emlak ilanları</h3><p>İlanlar hazır olduğunda burada kartlar halinde görünecek.</p>
-  </div>
-</section>
+<section id="emlak" class="section property"><div class="wrap"><div class="section-head"><div><div class="kicker">04 / EMLAK</div><h2>İdil emlak ilanları</h2></div><p>Satılık ve kiralık konut, işyeri, arsa ve diğer gayrimenkuller; fotoğraf, m², oda, konum, fiyat ve açıklama ile listelenir.</p></div><div id="propertyCards" class="cards"></div><div class="contact-strip"><div><b>Emlak hattı</b><div style="color:var(--gold);font-size:20px;font-weight:900">0544 250 71 73</div></div><a class="btn primary" href="https://wa.me/905442507173" target="_blank">Emlak Bilgisi Al</a></div></div></section>
 
-<section id="kurtarma" class="rescue">
-  <div>
-    <label>04 / ACİL YARDIM</label>
-    <h2>Yolda mı kaldınız?</h2>
-    <p>Oto kurtarma ve çekici hizmeti için doğrudan WhatsApp üzerinden ulaşabilirsiniz.</p>
-  </div>
-  <a href="https://wa.me/905447673310" target="_blank" rel="noopener">🚨 ACİL YARDIM → WHATSAPP</a>
-</section>
+<section id="kurtarma" class="section rescue"><div class="wrap"><div class="section-head"><div><div class="kicker">05 / ACİL DESTEK</div><h2>Oto kurtarma & çekici</h2></div><p>İdil ve çevresinde oto kurtarma ve çekici ihtiyacınız için doğrudan iletişim.</p></div><div class="feature-grid"><div class="feature"><div class="ico">🚨</div><h3>Acil Çekici</h3><p>0544 494 08 00 numarasından doğrudan arayabilir veya WhatsApp üzerinden ulaşabilirsiniz.</p></div><div class="feature"><div class="ico">📍</div><h3>İdil ve Çevresi</h3><p>İdil merkez ve çevre güzergâhlarda hizmet talebinizi konumunuzla iletebilirsiniz.</p></div><div class="feature"><div class="ico">⚡</div><h3>Hızlı İletişim</h3><p><a class="btn" href="https://wa.me/905444940800" target="_blank">WhatsApp'tan Yardım İste</a></p></div></div></div></section>
 
-<section id="mesafe" class="section distance">
-  <div class="heading"><label>05 / ULAŞIM</label><h2>İdil'e <em>ne kadar uzaktasınız?</em></h2><p>Bulunduğunuz il veya ilçeyi seçin. Aşağıdaki bağlantı sizi doğrudan 501 Otomotiv'in konumuna götürür. Google Maps, o anda kullanılabilir yol güzergâhlarını ve mesafeyi hesaplar.</p></div>
-  <div class="distance-box">
-    <div>
-      <label for="origin">Nereden geliyorsunuz?</label>
-      <select id="origin">
-        <option value="">İl / ilçe seçin</option>
-        <option>İdil, Şırnak</option>
-        <option>Cizre, Şırnak</option>
-        <option>Silopi, Şırnak</option>
-        <option>Şırnak Merkez</option>
-        <option>Dargeçit, Mardin</option>
-        <option>Midyat, Mardin</option>
-        <option>Nusaybin, Mardin</option>
-        <option>Kızıltepe, Mardin</option>
-        <option>Mardin</option>
-        <option>Diyarbakır</option>
-        <option>Batman</option>
-        <option>Siirt</option>
-        <option>Gaziantep</option>
-        <option>Şanlıurfa</option>
-        <option>Adana</option>
-        <option>Malatya</option>
-        <option>Van</option>
-        <option>Bitlis</option>
-        <option>Hakkari</option>
-      </select>
-    </div>
-    <button onclick="routeTo501()">🗺️ En uygun güzergâhı aç</button>
-    <div class="route-note" id="routeNote">Konum seçtiğinizde Google Maps'te 501 Otomotiv'e yol tarifi açılır.</div>
-  </div>
-  <div class="distance-note">
-    <b>📌 Neden doğrudan harita?</b>
-    <span>Yol mesafesi sabit değildir. Google Maps, seçilen noktaya göre güncel yol ağını kullanarak güzergâh ve mesafe bilgisini hesaplar. Böylece sitede yanlış veya eski kilometre bilgisi gösterilmez.</span>
-  </div>
-</section>
+<section id="mesafe" class="section"><div class="wrap"><div class="section-head"><div><div class="kicker">İDİL'E ULAŞIM</div><h2>Bulunduğunuz yerden mesafeyi hesaplayın</h2></div><p>Şehir veya ilçe adı yazın. Sistem konumu bulup İdil'e karayolu mesafesini ve yaklaşık sürüş süresini hesaplamayı dener.</p></div>
+<div class="route-box"><div class="route-controls"><input id="origin" placeholder="Örn. Dargeçit, Mardin / Batman / Cizre"><button class="btn primary" id="calc">Mesafeyi Hesapla</button></div><div id="routeResult" class="route-result"><div class="metric"><small>Karayolu mesafesi</small><b id="km">—</b></div><div class="metric"><small>Yaklaşık sürüş</small><b id="time">—</b></div><div class="metric"><small>Hedef</small><b>İdil</b></div></div><a id="mapLink" class="btn map-link" target="_blank">🗺️ Google Maps'te yol güzergâhını aç</a><div class="notice">Mesafe servisi kullanılabilir olmadığında Google Maps yol tarifi bağlantısı açılabilir. Sonuçlar trafik ve seçilen güzergâha göre değişebilir.</div></div></div></section>
 
-<section id="iletisim" class="contact">
-  <div class="section contact-inner">
-    <div><label>06 / İLETİŞİM</label><h2>501 Otomotiv<br><em>İdil'de.</em></h2><p>Yukarı Mah. Cizre Bulvarı No:272<br>İdil / Şırnak</p></div>
-    <div class="contact-list">
-      <a href="tel:+905447673310">📞 <b>0544 767 33 10</b><small>Hemen ara</small></a>
-      <a href="https://wa.me/905447673310" target="_blank">💬 <b>0544 767 33 10</b><small>WhatsApp mesajı gönder</small></a>
-      <a href="https://maps.google.com/maps?q=37.33407974243164,41.87986755371094&z=17&hl=tr" target="_blank">📍 <b>Konum</b><small>Yol tarifi al</small></a>
-    </div>
-  </div>
-</section>
+<section class="seo"><div class="wrap"><div class="kicker">İDİL VE YAKIN ÇEVRE</div><h2>501 Otomotiv — İdil'in araç ve hizmet noktası</h2><p>İdil araç kiralama, İdil rent a car, İdil oto kiralama, İdil merkez araç kiralama ve Şırnak araç kiralama arayan müşteriler için 501 Otomotiv; Cizre araç kiralama, Silopi araç kiralama, Dargeçit araç kiralama, Midyat araç kiralama ve çevre ilçelerden ulaşım ihtiyaçlarına yönelik hizmet sunar. İdil havaalanı araç kiralama ve Şırnak çevresi ulaşım ihtiyaçları için güncel araç seçenekleri hakkında WhatsApp üzerinden bilgi alınabilir. Ayrıca İdil emlak, İdil sigorta, DASK İdil, trafik sigortası İdil, kasko İdil, sağlık sigortası, İdil oto kurtarma ve İdil çekici hizmetleri hakkında bilgi alabilirsiniz.</p></div></section>
 
-<footer><b>501 OTOMOTİV - RENT A CAR</b><span>Otomotiv • Araç Kiralama • Sigorta • Emlak • Oto Kurtarma</span><small>© 501 Otomotiv — İdil / Şırnak</small></footer>
+<section id="iletisim" class="section contact"><div class="wrap"><div class="section-head"><div><div class="kicker">İLETİŞİM</div><h2>501 Otomotiv</h2></div><p>Yukarı Mah. Cizre Bulvarı No:272, İdil / Şırnak</p></div><div class="feature-grid"><div class="feature"><div class="ico">📞</div><h3>Genel</h3><p>0544 767 33 10</p></div><div class="feature"><div class="ico">🏠</div><h3>Emlak & Sigorta</h3><p>0544 250 71 73</p></div><div class="feature"><div class="ico">🚨</div><h3>Oto Kurtarma</h3><p>0544 494 08 00</p></div></div></div></section>
+</main>
+
+<footer><div class="wrap footer-grid"><div><b>501 OTOMOTİV - RENT A CAR</b><br>İdil / Şırnak</div><div class="designer">Web Tasarım: <a href="mailto:saracaksan@gmail.com">Sıraç Aksan</a> · <a href="tel:+905069282210">0506 928 22 10</a><br>saracaksan@gmail.com</div></div></footer>
 
 <script>
-const destination = "37.33407974243164,41.87986755371094";
-function routeTo501(){
-  const origin = document.getElementById("origin").value;
-  const note = document.getElementById("routeNote");
-  if(!origin){ note.textContent = "Lütfen önce il veya ilçe seçin."; return; }
-  note.textContent = origin + " → 501 Otomotiv / İdil güzergâhı açılıyor...";
-  const url = "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(origin) + "&destination=" + encodeURIComponent(destination) + "&travelmode=driving";
-  window.open(url, "_blank", "noopener");
+const COMPANY={lat:37.33407974243164,lon:41.87986755371094};
+const $=id=>document.getElementById(id);
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function card(x,type){
+ let icon=type==="property"?"🏠":"🚗", tag=type==="rental"?"KİRALIK":type==="sale"?"SATILIK":"EMLAK";
+ let image=x.image?`<img src="${esc(x.image)}" alt="${esc(x.title)}">`:icon;
+ let meta=type==="property"
+ ? [x.rooms,x.area,x.location].filter(Boolean).join(" • ")
+ : [x.year,x.fuel,x.transmission,x.km?x.km+" km":""].filter(Boolean).join(" • ");
+ let price=type==="rental"?`Günlük: ${esc(x.dailyPrice||"Bilgi için WhatsApp")}<br><small>Saatlik: ${esc(x.hourlyPrice||"Bilgi için WhatsApp")}</small>`:esc(x.price||"Fiyat bilgisi için iletişim");
+ return `<article class="card"><div class="card-img">${image}<span class="tag">${tag}</span></div><div class="card-body"><h3>${esc(x.title)}</h3><div class="meta">${esc(meta)}</div><p class="desc">${esc(x.description||"Detaylı bilgi için bizimle iletişime geçin.")}</p><div class="price-row"><div class="price">${price}</div><a class="btn" target="_blank" href="https://wa.me/905447673310?text=${encodeURIComponent("Merhaba 501 Otomotiv, "+(x.title||"ilan")+" hakkında bilgi almak istiyorum.")}">Bilgi Al</a></div></div></article>`;
 }
+async function load(){
+ try{
+  const r=await fetch("data/site.json?"+Date.now()); const d=await r.json();
+  $("rentalCards").innerHTML=(d.rentalVehicles||[]).length?(d.rentalVehicles.map(x=>card(x,"rental")).join("")):`<div class="empty">Şu anda yayınlanmış kiralık araç ilanı bulunmuyor.</div>`;
+  $("saleCards").innerHTML=(d.saleVehicles||[]).length?(d.saleVehicles.map(x=>card(x,"sale")).join("")):`<div class="empty">Şu anda yayınlanmış satılık araç ilanı bulunmuyor.</div>`;
+  $("propertyCards").innerHTML=(d.properties||[]).length?(d.properties.map(x=>card(x,"property")).join("")):`<div class="empty">Şu anda yayınlanmış emlak ilanı bulunmuyor.</div>`;
+  const types=d.insurance?.types||[];
+  $("insuranceCards").innerHTML=types.map((t,i)=>`<div class="feature"><div class="ico">${["🚘","🛡️","🏠","❤️","✈️","📄"][i]||"🛡️"}</div><h3>${esc(t)}</h3><p>${esc(d.insurance?.description||"Bilgi ve teklif için iletişime geçin.")}</p></div>`).join("");
+ }catch(e){console.warn(e)}
+}
+$("calc").onclick=async()=>{
+ const q=$("origin").value.trim(); if(!q){alert("Şehir veya ilçe yazın.");return}
+ $("calc").disabled=true;$("calc").textContent="Hesaplanıyor...";
+ try{
+  const g=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=tr&q="+encodeURIComponent(q),{headers:{"Accept-Language":"tr"}}).then(r=>r.json());
+  if(!g.length) throw new Error("Konum bulunamadı.");
+  const lon=g[0].lon,lat=g[0].lat;
+  const route=await fetch(`https://router.project-osrm.org/route/v1/driving/${lon},${lat};${COMPANY.lon},${COMPANY.lat}?overview=false`).then(r=>r.json());
+  if(route.code!=="Ok")throw new Error("Rota bulunamadı.");
+  const km=(route.routes[0].distance/1000).toFixed(1), min=Math.round(route.routes[0].duration/60);
+  const h=Math.floor(min/60),m=min%60;$("km").textContent=km+" km";$("time").textContent=(h?h+" sa ":"")+m+" dk";
+  $("routeResult").style.display="grid";
+  $("mapLink").style.display="inline-flex";
+  $("mapLink").href=`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(q)}&destination=${COMPANY.lat},${COMPANY.lon}&travelmode=driving`;
+ }catch(e){
+  $("routeResult").style.display="grid";$("km").textContent="—";$("time").textContent="Haritada aç";
+  $("mapLink").style.display="inline-flex";$("mapLink").href=`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(q)}&destination=${COMPANY.lat},${COMPANY.lon}&travelmode=driving`;
+  alert("Otomatik mesafe hesabı yapılamadı. Google Maps güzergâhını açabilirsiniz.");
+ }finally{$("calc").disabled=false;$("calc").textContent="Mesafeyi Hesapla"}
+};
+load();
 </script>
 </body>
 </html>

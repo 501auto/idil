@@ -86,7 +86,7 @@ function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&l
 
 function newItem(key){
   $("itemType").value=key;$("itemId").value="";
-  ["fTitle","fPrice","fModel","fKm","fDesc"].forEach(x=>$(x).value="");
+  ["fTitle","fPrice","fModel","fKm","fRooms","fLocation","fDesc"].forEach(x=>$(x).value="");
   $("fImage").value="";$("preview").classList.add("hidden");
   $("modalTitle").textContent=key==="properties"?"Yeni Emlak İlanı":"Yeni Araç";
   $("modal").classList.remove("hidden");
@@ -95,7 +95,7 @@ function editItem(key,id){
   const x=(DATA[key]||[]).find(a=>a.id===id);if(!x)return;
   $("itemType").value=key;$("itemId").value=id;
   $("fTitle").value=x.title||"";$("fPrice").value=x.price||"";$("fModel").value=x.model||"";
-  $("fKm").value=x.km||"";$("fDesc").value=x.description||"";
+  $("fKm").value=x.km||"";$("fRooms").value=x.rooms||"";$("fLocation").value=x.location||"";$("fDesc").value=x.description||"";
   $("fImage").value="";$("preview").classList.toggle("hidden",!x.image);if(x.image)$("preview").src=x.image;
   $("modalTitle").textContent="İlanı Düzenle";$("modal").classList.remove("hidden");
 }
@@ -105,7 +105,7 @@ async function saveItem(){
   const key=$("itemType").value,id=$("itemId").value||crypto.randomUUID();
   const arr=DATA[key]||(DATA[key]=[]);
   let x=arr.find(a=>a.id===id);if(!x){x={id};arr.push(x)}
-  x.title=$("fTitle").value.trim();x.price=$("fPrice").value.trim();x.model=$("fModel").value.trim();x.km=$("fKm").value.trim();x.description=$("fDesc").value.trim();
+  x.title=$("fTitle").value.trim();x.price=$("fPrice").value.trim();x.model=$("fModel").value.trim();x.km=$("fKm").value.trim();x.rooms=$("fRooms").value.trim();x.location=$("fLocation").value.trim();x.description=$("fDesc").value.trim();
   const file=$("fImage").files[0];
   try{
     if(file){

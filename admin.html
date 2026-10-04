@@ -1,99 +1,66 @@
-<!doctype html>
-<html lang="tr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>501 Otomotiv — Yönetim Paneli</title>
-<link rel="stylesheet" href="admin.css">
-</head>
-<body>
-<div class="shell">
-  <header>
-    <div class="brand"><b>501</b><span>OTOMOTİV YÖNETİM</span></div>
-    <div id="connection" class="offline">● BAĞLANTI YOK</div>
-  </header>
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>501 Otomotiv Yönetim</title>
+<style>
+:root{--bg:#080b0f;--p:#11171e;--p2:#161e26;--line:#29343f;--txt:#f4f6f8;--muted:#98a4b0;--gold:#f4b400;--red:#e15a5a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,Arial}.top{height:66px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;background:#0a0e13ee;backdrop-filter:blur(10px);z-index:5}.top b{font-size:24px;color:var(--gold)}.top span{font-size:11px;color:var(--muted);margin-left:8px;letter-spacing:1px}.status{font-size:11px;color:#e87c7c}.ok{color:#55d68a}.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 66px)}aside{border-right:1px solid var(--line);padding:18px 10px;background:#0c1117}aside button{width:100%;text-align:left;border:0;background:transparent;color:#aeb8c2;padding:12px;border-radius:8px;margin:2px 0;cursor:pointer}aside button.active,aside button:hover{background:var(--p2);color:white}main{padding:35px;max-width:1150px;width:100%}.page{display:none}.page.active{display:block}.intro{color:var(--muted);line-height:1.6}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.stat{padding:20px;background:var(--p);border:1px solid var(--line);border-radius:12px}.stat b{display:block;font-size:32px;color:var(--gold)}.stat small{color:var(--muted)}.bar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}.add,.save{border:0;background:var(--gold);color:#111;padding:11px 15px;border-radius:8px;font-weight:900;cursor:pointer}.list{display:grid;gap:10px}.item{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:16px;background:var(--p);border:1px solid var(--line);border-radius:12px}.item small{display:block;color:var(--muted);margin-top:5px}.item button{border:1px solid var(--line);background:#18202a;color:white;padding:8px 10px;border-radius:7px;cursor:pointer}.item .del{color:#ff8181}.form{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{font-size:11px;color:#aab4bf}.field.full{grid-column:1/-1}.field input,.field textarea,.field select{width:100%;margin-top:6px;padding:12px;border-radius:8px;border:1px solid var(--line);background:#080c11;color:white}.field textarea{min-height:100px;resize:vertical}.drop{border:1px dashed #44515e;border-radius:10px;padding:20px;background:#0c1117}.preview{width:130px;height:90px;object-fit:cover;border-radius:8px;margin-top:10px}.note{padding:13px;background:#151a20;border:1px solid var(--line);color:#a8b2bc;border-radius:10px;font-size:12px;line-height:1.5;margin-bottom:18px}.modal{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:18px;z-index:20}.modal.show{display:grid}.box{width:min(760px,100%);max-height:92vh;overflow:auto;background:#11171e;border:1px solid #34404b;border-radius:16px;padding:25px;position:relative}.close{position:absolute;right:14px;top:10px;border:0;background:transparent;color:white;font-size:26px;cursor:pointer}@media(max-width:750px){.layout{grid-template-columns:1fr}aside{display:flex;overflow:auto;gap:4px;border-right:0;border-bottom:1px solid var(--line)}aside button{min-width:max-content}.form,.stats{grid-template-columns:1fr}.field.full{grid-column:auto}main{padding:22px}.item{display:block}.item button{margin-top:10px}}
+</style></head><body>
+<header class="top"><div><b>501</b><span>OTOMOTİV YÖNETİM PANELİ</span></div><div id="status" class="status">● BAĞLI DEĞİL</div></header>
+<div class="layout"><aside>
+<button class="tab active" data-page="home">▦ Genel Bakış</button>
+<button class="tab" data-page="rental">🚘 Kiralık Araçlar</button>
+<button class="tab" data-page="sale">🚗 Satılık Araçlar</button>
+<button class="tab" data-page="property">🏠 Emlak</button>
+<button class="tab" data-page="insurance">🛡️ Sigorta</button>
+<button class="tab" data-page="business">⚙ İşletme</button>
+</aside><main>
+<section id="connect" class="page active"><h1>GitHub bağlantısı</h1><p class="intro">Bu yönetim paneli, ilan ve görselleri <b>501auto/idil</b> repository'sine kaydeder. Tokenı dosyaya koymaz ve kaydetmez.</p><div class="note">Fine-grained token için <b>Contents → Read and write</b> yetkisi ve yalnızca <b>501auto/idil</b> repository erişimi kullanın. Tokenı bu sayfaya girin; başkasına göndermeyin.</div><div class="form"><label class="field">GitHub kullanıcı adı<input id="user" value="501auto"></label><label class="field">Repository<input id="repo" value="idil"></label><label class="field full">GitHub token<input id="token" type="password" autocomplete="off"></label><button class="save field full" id="connectBtn">GitHub'a bağlan</button></div></section>
 
-  <section id="setup" class="card setup">
-    <h1>GitHub bağlantısı</h1>
-    <p>Bu panel yalnızca yönetim amacıyla kullanılmalıdır. Tokenı dosyaya kaydetmez; tarayıcı sekmesi açıkken bellekte kullanır.</p>
-    <div class="grid">
-      <label>GitHub kullanıcı adı<input id="ghUser" value="501auto"></label>
-      <label>Repository<input id="ghRepo" value="idil"></label>
-      <label class="wide">Fine-grained token<input id="ghToken" type="password" autocomplete="off" placeholder="github_pat_..."></label>
-    </div>
-    <button id="connect">GitHub'a bağlan</button>
-    <p class="warning">⚠️ Tokenı GitHub repository'sine, HTML/JS dosyasına veya herkese açık bir yere yazma. Bu panel tokenı localStorage'a kaydetmez.</p>
-  </section>
+<section id="home" class="page"><h1>Genel Bakış</h1><p class="intro">İlanları burada yönetin. Siteye yalnızca kaydettiğiniz ilanlar yayınlanır.</p><div class="stats"><div class="stat"><b id="sr">0</b><small>Kiralık araç</small></div><div class="stat"><b id="ss">0</b><small>Satılık araç</small></div><div class="stat"><b id="sp">0</b><small>Emlak ilanı</small></div></div><div class="note">Fotoğraf eklemek için ilan formundaki dosya alanını kullanın. Araç ve emlak formları birbirinden farklı alanlara sahiptir.</div></section>
 
-  <main id="panel" class="hidden">
-    <aside>
-      <button class="tab active" data-tab="dashboard">▦ Genel Bakış</button>
-      <button class="tab" data-tab="rental">🚘 Kiralık Araç</button>
-      <button class="tab" data-tab="sales">🚗 Satılık Araç</button>
-      <button class="tab" data-tab="property">🏠 Emlak</button>
-      <button class="tab" data-tab="business">⚙ İşletme</button>
-    </aside>
+<section id="rental" class="page"><div class="bar"><div><h1>Kiralık Araçlar</h1><p class="intro">Günlük ve saatlik kiralama bilgileri.</p></div><button class="add" onclick="openNew('rental')">+ Araç Ekle</button></div><div id="rentalList" class="list"></div></section>
+<section id="sale" class="page"><div class="bar"><div><h1>Satılık Araçlar</h1><p class="intro">Model, yıl, kilometre, yakıt, vites ve fiyat.</p></div><button class="add" onclick="openNew('sale')">+ Satılık Araç</button></div><div id="saleList" class="list"></div></section>
+<section id="property" class="page"><div class="bar"><div><h1>Emlak</h1><p class="intro">Emlakta kilometre yerine m², oda, kat ve gayrimenkul türü kullanılır.</p></div><button class="add" onclick="openNew('property')">+ Emlak Ekle</button></div><div id="propertyList" class="list"></div></section>
+<section id="insurance" class="page"><h1>Sigorta</h1><p class="intro">Sayfadaki sigorta tanıtımını ve iletişim bilgisini düzenleyin.</p><div class="form"><label class="field">Telefon<input id="insPhone"></label><label class="field">WhatsApp<input id="insWa"></label><label class="field full">Tanıtım<textarea id="insDesc"></textarea></label><button class="save field full" onclick="saveInsurance()">Sigorta bilgilerini kaydet</button></div></section>
+<section id="business" class="page"><h1>İşletme Bilgileri</h1><div class="form"><label class="field">İşletme adı<input id="bn"></label><label class="field">Sahibi<input id="bo"></label><label class="field">Genel telefon<input id="bp"></label><label class="field">WhatsApp<input id="bw"></label><label class="field">Emlak / Sigorta<input id="bi"></label><label class="field">Oto kurtarma<input id="bt"></label><label class="field full">Adres<input id="ba"></label><button class="save field full" onclick="saveBusiness()">İşletme bilgilerini kaydet</button></div></section>
+</main></div>
 
-    <section class="content">
-      <div id="dashboard" class="page">
-        <h2>501 Otomotiv</h2>
-        <p class="muted">GitHub üzerindeki site verilerini buradan yönet.</p>
-        <div class="stats">
-          <div><b id="nRental">0</b><span>Kiralık araç</span></div>
-          <div><b id="nSales">0</b><span>Satılık araç</span></div>
-          <div><b id="nProperty">0</b><span>Emlak ilanı</span></div>
-        </div>
-      </div>
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">×</button><h2 id="mt">İlan</h2><input type="hidden" id="type"><input type="hidden" id="id"><div id="formFields"></div></div></div>
 
-      <div id="rental" class="page hidden">
-        <div class="head"><h2>Kiralık Araçlar</h2><button class="primary" onclick="newItem('rentalVehicles')">+ Araç Ekle</button></div>
-        <div id="rentalList" class="items"></div>
-      </div>
-
-      <div id="sales" class="page hidden">
-        <div class="head"><h2>Satılık Araçlar</h2><button class="primary" onclick="newItem('saleVehicles')">+ Araç Ekle</button></div>
-        <div id="salesList" class="items"></div>
-      </div>
-
-      <div id="property" class="page hidden">
-        <div class="head"><h2>Emlak İlanları</h2><button class="primary" onclick="newItem('properties')">+ İlan Ekle</button></div>
-        <div id="propertyList" class="items"></div>
-      </div>
-
-      <div id="business" class="page hidden">
-        <h2>İşletme Bilgileri</h2>
-        <div class="form">
-          <label>İşletme adı<input id="bizName"></label>
-          <label>Sahibi<input id="bizOwner"></label>
-          <label>Telefon<input id="bizPhone"></label>
-          <label>WhatsApp<input id="bizWhatsapp"></label>
-          <label class="wide">Adres<input id="bizAddress"></label>
-          <label>Enlem<input id="bizLat"></label>
-          <label>Boylam<input id="bizLng"></label>
-          <button class="primary wide" onclick="saveBusiness()">İşletme bilgilerini GitHub'a kaydet</button>
-        </div>
-      </div>
-    </section>
-  </main>
-</div>
-
-<div id="modal" class="modal hidden">
-  <div class="modalbox">
-    <button class="close" onclick="closeModal()">×</button>
-    <h2 id="modalTitle">İlan</h2>
-    <input type="hidden" id="itemType"><input type="hidden" id="itemId">
-    <div class="form">
-      <label>Başlık<input id="fTitle" placeholder="Örn. Renault Clio 1.0"></label>
-      <label>Fiyat<input id="fPrice" placeholder="Örn. 1.250 TL / gün"></label>
-      <label>Model / Yıl<input id="fModel" placeholder="Örn. 2024"></label>
-      <label>Kilometre<input id="fKm" placeholder="Örn. 45.000"></label>
-      <label class="wide">Açıklama<textarea id="fDesc" rows="5"></textarea></label>
-      <label class="wide">Fotoğraf<input id="fImage" type="file" accept="image/*"></label>
-      <img id="preview" class="preview hidden">
-      <button class="primary wide" onclick="saveItem()">GitHub'a kaydet / yayınla</button>
-    </div>
-  </div>
-</div>
-<script src="admin.js"></script>
-</body>
-</html>
+<script>
+let TOKEN="",OWNER="501auto",REPO="idil",DATA=null;
+const $=x=>document.getElementById(x);
+const api=()=>`https://api.github.com/repos/${OWNER}/${REPO}/contents`;
+async function gh(path,opt={}){let r=await fetch(api()+"/"+path,{...opt,headers:{"Accept":"application/vnd.github+json","Authorization":"Bearer "+TOKEN,"X-GitHub-Api-Version":"2022-11-28",...(opt.headers||{})}});if(!r.ok)throw new Error(await r.text());return r.json()}
+function enc(s){return btoa(unescape(encodeURIComponent(s)))}function dec(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,""))))}
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+async function readData(){let r=await gh("data/site.json");DATA=JSON.parse(dec(r.content));DATA._sha=r.sha;return DATA}
+$("connectBtn").onclick=async()=>{TOKEN=$("token").value.trim();OWNER=$("user").value.trim();REPO=$("repo").value.trim();if(!TOKEN)return alert("Token girin.");try{await gh("");await readData();$("connect").classList.remove("active");$("home").classList.add("active");$("status").textContent="● GITHUB BAĞLI";$("status").className="status ok";render();fill();}catch(e){alert("Bağlantı başarısız:\n"+e.message)}};
+async function write(msg){let r=await gh("data/site.json");let out=await gh("data/site.json",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:msg,content:enc(JSON.stringify(DATA,null,2)),sha:r.sha})});DATA._sha=out.content.sha;render()}
+function render(){["rental","sale","property"].forEach(t=>{let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties";let a=DATA[key]||[];$((t==="rental"?"rentalList":t==="sale"?"saleList":"propertyList")).innerHTML=a.length?a.map(x=>`<div class="item"><div><b>${esc(x.title)}</b><small>${esc(t==="property"?[x.type,x.area,x.rooms,x.location].filter(Boolean).join(" • "):[x.year,x.fuel,x.transmission,x.km].filter(Boolean).join(" • "))}</small></div><div><button onclick="edit('${t}','${x.id}')">Düzenle</button> <button class="del" onclick="removeItem('${t}','${x.id}')">Sil</button></div></div>`).join(""):`<div class="note">Henüz ilan yok.</div>`;$("sr").textContent=(DATA.rentalVehicles||[]).length;$("ss").textContent=(DATA.saleVehicles||[]).length;$("sp").textContent=(DATA.properties||[]).length})}
+function fields(t,x={}){let isP=t==="property", isR=t==="rental";return `<div class="form">
+<label class="field">Başlık<input id="f_title" value="${esc(x.title)}" placeholder="${isP?"Örn. 3+1 Daire":"Örn. Renault Clio"}"></label>
+${isP?`<label class="field">Gayrimenkul türü<select id="f_type"><option>Daire</option><option>Villa</option><option>Arsa</option><option>İşyeri</option><option>Müstakil Ev</option></select></label>`:`<label class="field">Yıl<input id="f_year" value="${esc(x.year)}"></label>`}
+${isP?`<label class="field">m²<input id="f_area" value="${esc(x.area)}"></label><label class="field">Oda sayısı<input id="f_rooms" value="${esc(x.rooms)}" placeholder="3+1"></label><label class="field">Kat<input id="f_floor" value="${esc(x.floor)}"></label><label class="field">Konum<input id="f_location" value="${esc(x.location)}"></label>`:
+`<label class="field">Kilometre<input id="f_km" value="${esc(x.km)}"></label><label class="field">Yakıt<input id="f_fuel" value="${esc(x.fuel)}"></label><label class="field">Vites<input id="f_trans" value="${esc(x.transmission)}"></label>${isR?`<label class="field">Günlük fiyat<input id="f_daily" value="${esc(x.dailyPrice)}"></label><label class="field">Saatlik fiyat<input id="f_hourly" value="${esc(x.hourlyPrice)}"></label>`:`<label class="field">Satış fiyatı<input id="f_price" value="${esc(x.price)}"></label>`}`}
+<label class="field full">Açıklama<textarea id="f_desc">${esc(x.description)}</textarea></label>
+<label class="field full">Fotoğraf<div class="drop"><input id="f_file" type="file" accept="image/*">${x.image?`<br><img class="preview" src="${esc(x.image)}">`:""}</div></label>
+<button class="save field full" onclick="saveItem('${t}','${esc(x.id||"")}')">GitHub'a kaydet / yayınla</button></div>`}
+function openNew(t){$("type").value=t;$("id").value="";$("mt").textContent=t==="property"?"Yeni Emlak İlanı":t==="rental"?"Yeni Kiralık Araç":"Yeni Satılık Araç";$("formFields").innerHTML=fields(t);$("modal").classList.add("show")}
+function edit(t,id){let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties",x=(DATA[key]||[]).find(a=>a.id===id);$("id").value=id;$("mt").textContent="İlanı Düzenle";$("formFields").innerHTML=fields(t,x);$("modal").classList.add("show")}
+function closeModal(){$("modal").classList.remove("show")}
+async function file64(f){return new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(r.result.split(",")[1]);r.onerror=rej;r.readAsDataURL(f)})}
+async function put(path,content,msg,sha){let b={message:msg,content};if(sha)b.sha=sha;return gh(path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)})}
+async function saveItem(t,id){
+ let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties",a=DATA[key]||(DATA[key]=[]),x=a.find(z=>z.id===id);
+ if(!x){id=crypto.randomUUID();x={id};a.push(x)}
+ x.title=$("f_title").value.trim();x.description=$("f_desc").value.trim();
+ if(t==="property"){x.type=$("f_type").value;x.area=$("f_area").value.trim();x.rooms=$("f_rooms").value.trim();x.floor=$("f_floor").value.trim();x.location=$("f_location").value.trim()}
+ else{x.year=$("f_year").value.trim();x.km=$("f_km").value.trim();x.fuel=$("f_fuel").value.trim();x.transmission=$("f_trans").value.trim();if(t==="rental"){x.dailyPrice=$("f_daily").value.trim();x.hourlyPrice=$("f_hourly").value.trim()}else{x.price=$("f_price").value.trim()}}
+ let f=$("f_file").files[0];
+ try{if(f){let ext=(f.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";let path=`images/${t}/${id}.${ext}`,sha=null;try{sha=(await gh(path)).sha}catch(e){}await put(path,await file64(f),"501: fotoğraf güncellendi",sha);x.image=`images/${t}/${id}.${ext}`;}
+ await write("501: ilan güncellendi");closeModal();alert("İlan kaydedildi.");}catch(e){alert("Kaydedilemedi:\n"+e.message)}}
+async function removeItem(t,id){if(!confirm("İlan silinsin mi?"))return;let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties";DATA[key]=(DATA[key]||[]).filter(x=>x.id!==id);try{await write("501: ilan silindi")}catch(e){alert(e.message)}}
+function fill(){let c=DATA.company||{},i=DATA.insurance||{};$("bn").value=c.name||"";$("bo").value=c.owner||"";$("bp").value=c.phone||"";$("bw").value=c.whatsapp||"";$("bi").value=c.insurancePhone||c.realEstatePhone||"";$("bt").value=c.towingPhone||"";$("ba").value=c.address||"";$("insPhone").value=c.insurancePhone||"";$("insWa").value=c.insurancePhone?.replace(/\D/g,"")||"";$("insDesc").value=i.description||""}
+async function saveBusiness(){let c=DATA.company||{};c.name=$("bn").value;c.owner=$("bo").value;c.phone=$("bp").value;c.whatsapp=$("bw").value;c.insurancePhone=$("bi").value;c.realEstatePhone=$("bi").value;c.towingPhone=$("bt").value;c.address=$("ba").value;DATA.company=c;try{await write("501: işletme bilgileri güncellendi");alert("Kaydedildi.")}catch(e){alert(e.message)}}
+async function saveInsurance(){DATA.insurance=DATA.insurance||{};DATA.insurance.description=$("insDesc").value;DATA.company.insurancePhone=$("insPhone").value;try{await write("501: sigorta bilgileri güncellendi");alert("Kaydedildi.")}catch(e){alert(e.message)}}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{if(!TOKEN){alert("Önce GitHub'a bağlanın.");return}document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$(b.dataset.page).classList.add("active")});
+</script></body></html>

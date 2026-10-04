@@ -13,3 +13,32 @@
 footer{padding:55px 8% 80px;background:#050608;color:#9fa8b3}footer b{display:block;color:var(--gold);font-size:20px}footer span,footer small{display:block;font-size:12px;margin-top:7px}footer small{color:#66707c;margin-top:25px}
 @media(max-width:1050px){nav{display:none}.cards{grid-template-columns:1fr 1fr}.quick{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.topbar{height:64px;padding:0 5%}.header-call{font-size:11px}.hero{min-height:720px;padding:110px 6% 80px}.hero h1{font-size:58px;letter-spacing:-3px}.hero-info{left:6%;right:auto;bottom:30px}.section{padding:75px 6%}.cards{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}.quick a{padding:18px 12px}.rescue{padding:60px 6%;display:block}.rescue a{display:inline-block;margin-top:25px}.distance-box{grid-template-columns:1fr}.distance-box button{width:100%}.distance-note{display:block}.distance-note span{display:block;margin-top:8px}.contact-inner{grid-template-columns:1fr;padding:70px 6%}}
+
+.price-badge{display:inline-block;margin-top:14px;padding:9px 14px;border:1px solid rgba(245,180,0,.45);border-radius:999px;background:rgba(245,180,0,.1);color:#f5b400;font-weight:900;font-size:12px;letter-spacing:.5px}
+.vehicle-card{overflow:hidden;border:1px solid #29323d;border-radius:16px;background:#11171e;box-shadow:0 15px 35px rgba(0,0,0,.15)}
+.vehicle-image{height:190px;display:grid;place-items:center;position:relative;font-size:80px;background:linear-gradient(135deg,#1a222c,#0d1218)}
+.vehicle-image span{position:absolute;top:14px;left:14px;font-size:10px;font-weight:900;letter-spacing:1.2px;padding:7px 10px;border-radius:999px;background:#f5b400;color:#101010}
+.vehicle-body{padding:20px}
+.vehicle-body label{font-size:10px;letter-spacing:1.6px;color:#f5b400;font-weight:900}
+.vehicle-body h3{font-size:24px;margin:7px 0}
+.vehicle-body p{color:#8e99a5;margin:0 0 15px}
+.vehicle-price{display:flex;justify-content:space-between;gap:12px;align-items:end;padding:13px 0;border-top:1px solid #252e38;border-bottom:1px solid #252e38;margin-bottom:15px}
+.vehicle-price b{font-size:15px}
+.vehicle-price small{color:#8e99a5;text-align:right}
+.vehicle-body>a{color:#f5b400;font-weight:800;text-decoration:none}
+.designer{margin-top:6px}
+.designer a{color:#f5b400;text-decoration:none}
+
+/* V5 profesyonel servis tasarımı */
+.seo-copy{max-width:780px!important;margin-top:10px!important;font-size:13px!important;opacity:.82}
+.insurance-section{background:radial-gradient(circle at 15% 10%,#17313a 0,#0a151a 38%,#070b0e 100%);color:#f5f7fa;padding:25px 0 70px;border-top:1px solid #20353b;border-bottom:1px solid #20353b}
+.insurance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
+.insurance-grid article{padding:25px;border:1px solid #27424a;background:rgba(14,28,34,.82);border-radius:15px;min-height:170px}
+.insurance-grid article>span{font-size:30px}.insurance-grid h3{margin:13px 0 8px}.insurance-grid p{color:#9eb0b8;line-height:1.6}
+.contact-strip{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 22px;margin-top:25px;border:1px solid #3b4b52;border-radius:14px;background:rgba(255,255,255,.035)}
+.contact-strip div{display:flex;flex-direction:column;gap:5px}.contact-strip span{font-size:20px;font-weight:900;color:#f5b400}.contact-strip a{padding:12px 16px;border-radius:8px;background:#f5b400;color:#101010;text-decoration:none;font-weight:900}
+.property-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
+.property-feature{padding:30px;border-radius:16px;background:linear-gradient(145deg,#211b13,#12100d);border:1px solid #443726;min-height:210px}.property-feature>span{font-size:34px}.property-feature h3{margin:12px 0 7px}.property-feature p{color:#9b958c;line-height:1.65}
+.property-contact{background:#15120f;border-color:#4a3c28}.rescue{background:radial-gradient(circle at 80% 50%,#3b1717,#150b0b 55%,#090808);border-top:1px solid #4a2323;border-bottom:1px solid #4a2323}
+.seo-area{background:#0c1014;color:#a5afb9;border-top:1px solid #202832}.seo-area h2{color:#eef1f4}.seo-area p{line-height:1.8;max-width:950px}
+@media(max-width:800px){.insurance-grid,.property-grid{grid-template-columns:1fr}.contact-strip{display:block}.contact-strip a{display:inline-block;margin-top:14px}}

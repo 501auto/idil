@@ -4,48 +4,39 @@
     "owner": "Ferit Kaşbaş",
     "phone": "0544 767 33 10",
     "whatsapp": "905447673310",
+    "insurancePhone": "0544 250 71 73",
+    "realEstatePhone": "0544 250 71 73",
+    "towingPhone": "0544 494 08 00",
     "address": "Yukarı Mah. Cizre Bulvarı No:272, İdil / Şırnak",
     "latitude": 37.33407974243164,
     "longitude": 41.87986755371094
   },
-  "services": [
+  "rentalVehicles": [
     {
-      "id": "rent-a-car",
-      "title": "Araç Kiralama",
-      "active": true
-    },
-    {
-      "id": "vehicle-sales",
-      "title": "Araç Alım Satım",
-      "active": true
-    },
-    {
-      "id": "insurance",
-      "title": "Sigorta",
-      "active": true
-    },
-    {
-      "id": "real-estate",
-      "title": "Emlak",
-      "active": true
-    },
-    {
-      "id": "towing",
-      "title": "Oto Kurtarma",
-      "active": true
+      "id": "example-1",
+      "title": "Örnek Renault Clio",
+      "year": "2024",
+      "fuel": "Benzin",
+      "transmission": "Manuel",
+      "km": "45.000",
+      "dailyPrice": "Örnek fiyat",
+      "hourlyPrice": "Örnek fiyat",
+      "description": "Bu örnek ilan yönetim panelinden gerçek araç bilgileriyle değiştirilebilir.",
+      "image": ""
     }
   ],
-  "rentalVehicles": [],
-  "saleVehicles": [
-    {
-      "id": "b059dcc7-ad06-465d-bbf6-1253b7eb019b",
-      "title": "Volkswagen Passat 1.6 dizel",
-      "price": "1875.000",
-      "model": "2020",
-      "km": "162000",
-      "description": "🚗 Model: 2020 Volkswagen Passat\n* ⛽ Motor: 1.6 TDI dizel\n* ⚙️ Otomatik vites\n* 📅 Model yılı: 2020\n* 📍 Kilometre: 161.000 km\n* ✅ Darbesiz\n* ✅ Boyasız\n* ✅ Hasarsız / tramer yok\n* 🛞 4 lastik sıfır, yeni\n* 💰 fiyat: 1.875.000 TL",
-      "image": "https://501auto.github.io/idil/images/saleVehicles/b059dcc7-ad06-465d-bbf6-1253b7eb019b.png"
-    }
-  ],
-  "properties": []
+  "saleVehicles": [],
+  "properties": [],
+  "insurance": {
+    "title": "Sigorta Çözümleri",
+    "description": "Trafik sigortası, kasko, DASK, sağlık ve diğer sigorta ürünleri için teklif ve bilgi desteği.",
+    "types": [
+      "Trafik Sigortası",
+      "Kasko",
+      "DASK",
+      "Sağlık Sigortası",
+      "Seyahat Sigortası",
+      "Diğer Sigortalar"
+    ]
+  }
 }
