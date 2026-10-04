@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>501 Yönetim Paneli</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="login" class="login">
+  <div class="login-card">
+    <div class="logo"><b>501</b> YÖNETİM</div>
+    <p>501 Otomotiv - Rent a Car</p>
+    <label>Kullanıcı adı</label>
+    <input id="username" autocomplete="username" placeholder="Kullanıcı adı">
+    <label>Şifre</label>
+    <input id="password" type="password" autocomplete="current-password" placeholder="Şifre">
+    <button id="loginBtn">YÖNETİM PANELİNE GİR</button>
+    <small id="loginMessage"></small>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+  <aside>
+    <div class="aside-logo"><b>501</b><span>YÖNETİM</span></div>
+    <button class="menu active" data-page="dashboard">▦ Genel Bakış</button>
+    <button class="menu" data-page="rental">🚘 Kiralık Araçlar</button>
+    <button class="menu" data-page="sales">🚗 Satılık Araçlar</button>
+    <button class="menu" data-page="property">🏠 Emlak İlanları</button>
+    <button class="menu" data-page="business">⚙ İşletme Bilgileri</button>
+    <button id="logout" class="logout">Çıkış</button>
+  </aside>
+
+  <main>
+    <header><div><span>YÖNETİM PANELİ</span><h1 id="pageTitle">Genel Bakış</h1></div><div class="status">● SİSTEM HAZIR</div></header>
+
+    <section id="dashboard" class="page">
+      <div class="stats">
+        <div><b id="rentalCount">0</b><span>Kiralık Araç</span></div>
+        <div><b id="saleCount">0</b><span>Satılık Araç</span></div>
+        <div><b id="propertyCount">0</b><span>Emlak İlanı</span></div>
+        <div><b>5</b><span>Aktif Hizmet</span></div>
+      </div>
+      <div class="welcome"><div>501</div><h2>İlanlarınızı tek yerden yönetin.</h2><p>Bu panel; kiralık araç, satılık araç, emlak ve işletme bilgilerini yönetmek için hazırlanmıştır.</p></div>
+    </section>
+
+    <section id="rental" class="page hidden"><div class="section-head"><div><span>KİRALAMA</span><h2>Kiralık Araçlar</h2></div><button class="add">+ Yeni Araç</button></div><div id="rentalList" class="list"></div></section>
+    <section id="sales" class="page hidden"><div class="section-head"><div><span>OTOMOTİV</span><h2>Satılık Araçlar</h2></div><button class="add">+ Yeni Araç</button></div><div id="salesList" class="list"></div></section>
+    <section id="property" class="page hidden"><div class="section-head"><div><span>EMLAK</span><h2>Emlak İlanları</h2></div><button class="add">+ Yeni İlan</button></div><div id="propertyList" class="list"></div></section>
+
+    <section id="business" class="page hidden">
+      <div class="section-head"><div><span>AYARLAR</span><h2>İşletme Bilgileri</h2></div></div>
+      <div class="form-card">
+        <label>İşletme adı</label><input id="companyName">
+        <label>Telefon</label><input id="companyPhone">
+        <label>WhatsApp</label><input id="companyWhatsapp">
+        <label>Adres</label><input id="companyAddress">
+        <label>Google Maps enlem</label><input id="lat" type="number" step="any">
+        <label>Google Maps boylam</label><input id="lng" type="number" step="any">
+        <button class="save">Bilgileri Hazırla</button>
+        <p class="notice">Bu sürümde kayıt işlemi henüz GitHub'a gönderilmiyor. 6. adımda güvenli GitHub yazma bağlantısı kurulacak.</p>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>
