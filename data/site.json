@@ -25,32 +25,8 @@
       "image": ""
     }
   ],
-  "saleVehicles": [
-    {
-      "id": "a84baec8-4486-4c5f-b991-5f9e74ef0ce1",
-      "title": "Nisan qaşqai",
-      "description": "Aracım hasarsız darbesiz temizdir",
-      "year": "2020",
-      "km": "70000",
-      "fuel": "dizel",
-      "transmission": "6",
-      "price": "300000",
-      "image": "images/sale/a84baec8-4486-4c5f-b991-5f9e74ef0ce1.jpeg"
-    }
-  ],
-  "properties": [
-    {
-      "id": "afdabfde-8ca7-4c0e-b05d-afe3bc27f585",
-      "title": "3 + 1 daire",
-      "description": "",
-      "type": "Daire",
-      "area": "150",
-      "rooms": "3+1",
-      "floor": "3",
-      "location": "idil",
-      "image": "images/property/afdabfde-8ca7-4c0e-b05d-afe3bc27f585.jpeg"
-    }
-  ],
+  "saleVehicles": [],
+  "properties": [],
   "insurance": {
     "title": "Sigorta Çözümleri",
     "description": "Trafik sigortası, kasko, DASK, sağlık ve diğer sigorta ürünleri için teklif ve bilgi desteği.",
@@ -62,6 +38,5 @@
       "Seyahat Sigortası",
       "Diğer Sigortalar"
     ]
-  },
-  "_sha": "95f9890fe341adc21e2186f8e134a42ac6d1e37f"
+  }
 }
