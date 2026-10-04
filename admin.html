@@ -42,23 +42,62 @@ ${isP?`<label class="field">Gayrimenkul türü<select id="f_type"><option>Daire<
 ${isP?`<label class="field">m²<input id="f_area" value="${esc(x.area)}"></label><label class="field">Oda sayısı<input id="f_rooms" value="${esc(x.rooms)}" placeholder="3+1"></label><label class="field">Kat<input id="f_floor" value="${esc(x.floor)}"></label><label class="field">Konum<input id="f_location" value="${esc(x.location)}"></label>`:
 `<label class="field">Kilometre<input id="f_km" value="${esc(x.km)}"></label><label class="field">Yakıt<input id="f_fuel" value="${esc(x.fuel)}"></label><label class="field">Vites<input id="f_trans" value="${esc(x.transmission)}"></label>${isR?`<label class="field">Günlük fiyat<input id="f_daily" value="${esc(x.dailyPrice)}"></label><label class="field">Saatlik fiyat<input id="f_hourly" value="${esc(x.hourlyPrice)}"></label>`:`<label class="field">Satış fiyatı<input id="f_price" value="${esc(x.price)}"></label>`}`}
 <label class="field full">Açıklama<textarea id="f_desc">${esc(x.description)}</textarea></label>
-<label class="field full">Fotoğraf<div class="drop"><input id="f_file" type="file" accept="image/*">${x.image?`<br><img class="preview" src="${esc(x.image)}">`:""}</div></label>
+<label class="field full">Fotoğraflar<div class="drop"><input id="f_file" type="file" accept="image/*" multiple>
+<small style="display:block;color:#8d99a5;margin-top:8px">Birden fazla fotoğraf seçebilirsiniz. Mevcut fotoğraflar korunur; seçtiğiniz yeni fotoğraflar ilana eklenir.</small>
+<div id="existingImages">${(Array.isArray(x.images)?x.images:(x.image?[x.image]:[])).map((im,i)=>`<span style="display:inline-block;margin:8px 8px 0 0;position:relative"><img class="preview" src="${esc(im)}"><button type="button" onclick="markImageDelete(${i})" style="position:absolute;right:2px;top:2px;background:#c33;color:white;border:0;border-radius:5px;cursor:pointer">×</button></span>`).join("")}</div></div></label>
 <button class="save field full" onclick="saveItem('${t}','${esc(x.id||"")}')">GitHub'a kaydet / yayınla</button></div>`}
-function openNew(t){$("type").value=t;$("id").value="";$("mt").textContent=t==="property"?"Yeni Emlak İlanı":t==="rental"?"Yeni Kiralık Araç":"Yeni Satılık Araç";$("formFields").innerHTML=fields(t);$("modal").classList.add("show")}
-function edit(t,id){let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties",x=(DATA[key]||[]).find(a=>a.id===id);$("id").value=id;$("mt").textContent="İlanı Düzenle";$("formFields").innerHTML=fields(t,x);$("modal").classList.add("show")}
+function openNew(t){deleteImageIndexes=[];$("type").value=t;$("id").value="";$("mt").textContent=t==="property"?"Yeni Emlak İlanı":t==="rental"?"Yeni Kiralık Araç":"Yeni Satılık Araç";$("formFields").innerHTML=fields(t);$("modal").classList.add("show")}
+function edit(t,id){deleteImageIndexes=[];let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties",x=(DATA[key]||[]).find(a=>a.id===id);$("id").value=id;$("mt").textContent="İlanı Düzenle";$("formFields").innerHTML=fields(t,x);$("modal").classList.add("show")}
 function closeModal(){$("modal").classList.remove("show")}
 async function file64(f){return new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(r.result.split(",")[1]);r.onerror=rej;r.readAsDataURL(f)})}
-async function put(path,content,msg,sha){let b={message:msg,content};if(sha)b.sha=sha;return gh(path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)})}
+let deleteImageIndexes=[];
+function markImageDelete(i){deleteImageIndexes.push(i);const el=document.querySelectorAll("#existingImages > span")[i];if(el){el.style.opacity=".25";el.style.filter="grayscale(1)";el.querySelector("button").disabled=true}}
+async function deleteGithubFile(path,sha){
+ if(!path)return;
+ let s=sha;
+ if(!s){try{s=(await gh(path)).sha}catch(e){return}}
+ await gh(path,{method:"DELETE",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"501: fotoğraf silindi",sha:s})});
+}
+async function uploadImages(t,id,files){
+ let paths=[];
+ for(let i=0;i<files.length;i++){
+  let f=files[i], ext=(f.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";
+  let path=`images/${t}/${id}-${Date.now()}-${i}.${ext}`;
+  await put(path,await file64(f),"501: ilan fotoğrafı eklendi");
+  paths.push(path);
+ }
+ return paths;
+}
 async function saveItem(t,id){
  let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties",a=DATA[key]||(DATA[key]=[]),x=a.find(z=>z.id===id);
- if(!x){id=crypto.randomUUID();x={id};a.push(x)}
+ if(!x){id=crypto.randomUUID();x={id,images:[]};a.push(x)}
+ x.images=Array.isArray(x.images)?x.images:(x.image?[x.image]:[]);
  x.title=$("f_title").value.trim();x.description=$("f_desc").value.trim();
  if(t==="property"){x.type=$("f_type").value;x.area=$("f_area").value.trim();x.rooms=$("f_rooms").value.trim();x.floor=$("f_floor").value.trim();x.location=$("f_location").value.trim()}
  else{x.year=$("f_year").value.trim();x.km=$("f_km").value.trim();x.fuel=$("f_fuel").value.trim();x.transmission=$("f_trans").value.trim();if(t==="rental"){x.dailyPrice=$("f_daily").value.trim();x.hourlyPrice=$("f_hourly").value.trim()}else{x.price=$("f_price").value.trim()}}
- let f=$("f_file").files[0];
- try{if(f){let ext=(f.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";let path=`images/${t}/${id}.${ext}`,sha=null;try{sha=(await gh(path)).sha}catch(e){}await put(path,await file64(f),"501: fotoğraf güncellendi",sha);x.image=`images/${t}/${id}.${ext}`;}
- await write("501: ilan güncellendi");closeModal();alert("İlan kaydedildi.");}catch(e){alert("Kaydedilemedi:\n"+e.message)}}
-async function removeItem(t,id){if(!confirm("İlan silinsin mi?"))return;let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties";DATA[key]=(DATA[key]||[]).filter(x=>x.id!==id);try{await write("501: ilan silindi")}catch(e){alert(e.message)}}
+ let files=[...($("f_file")?.files||[])];
+ try{
+   for(const idx of [...new Set(deleteImageIndexes)].sort((a,b)=>b-a)){
+     const path=x.images[idx]; if(path) await deleteGithubFile(path);
+     x.images.splice(idx,1);
+   }
+   const newPaths=await uploadImages(t,id,files);
+   x.images.push(...newPaths);
+   delete x.image;
+   await write("501: ilan ve fotoğrafları güncellendi");
+   deleteImageIndexes=[];closeModal();alert("İlan ve fotoğrafları kaydedildi.");
+ }catch(e){alert("Kaydedilemedi:\n"+e.message)}
+}
+async function removeItem(t,id){
+ if(!confirm("Bu ilan ve GitHub'daki ilan fotoğrafları kalıcı olarak silinsin mi?"))return;
+ let key=t==="rental"?"rentalVehicles":t==="sale"?"saleVehicles":"properties";
+ let x=(DATA[key]||[]).find(a=>a.id===id);
+ try{
+   for(const path of (Array.isArray(x?.images)?x.images:(x?.image?[x.image]:[]))) await deleteGithubFile(path);
+   DATA[key]=(DATA[key]||[]).filter(a=>a.id!==id);
+   await write("501: ilan ve fotoğrafları silindi");
+ }catch(e){alert("Silinemedi:\n"+e.message)}
+}
 function fill(){let c=DATA.company||{},i=DATA.insurance||{};$("bn").value=c.name||"";$("bo").value=c.owner||"";$("bp").value=c.phone||"";$("bw").value=c.whatsapp||"";$("bi").value=c.insurancePhone||c.realEstatePhone||"";$("bt").value=c.towingPhone||"";$("ba").value=c.address||"";$("insPhone").value=c.insurancePhone||"";$("insWa").value=c.insurancePhone?.replace(/\D/g,"")||"";$("insDesc").value=i.description||""}
 async function saveBusiness(){let c=DATA.company||{};c.name=$("bn").value;c.owner=$("bo").value;c.phone=$("bp").value;c.whatsapp=$("bw").value;c.insurancePhone=$("bi").value;c.realEstatePhone=$("bi").value;c.towingPhone=$("bt").value;c.address=$("ba").value;DATA.company=c;try{await write("501: işletme bilgileri güncellendi");alert("Kaydedildi.")}catch(e){alert(e.message)}}
 async function saveInsurance(){DATA.insurance=DATA.insurance||{};DATA.insurance.description=$("insDesc").value;DATA.company.insurancePhone=$("insPhone").value;try{await write("501: sigorta bilgileri güncellendi");alert("Kaydedildi.")}catch(e){alert(e.message)}}

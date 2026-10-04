@@ -26,6 +26,14 @@ nav{display:flex;gap:4px}nav a{text-decoration:none;color:#aeb7c1;padding:10px 1
 footer{border-top:1px solid var(--line);padding:30px 0;color:#7e8995;font-size:12px}.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.designer{color:#aeb7c1}.designer a{color:var(--gold);text-decoration:none}
 @media(max-width:900px){nav{display:none}.hero-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.cards,.feature-grid,.insurance-grid{grid-template-columns:1fr 1fr}.route-result{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.hero{padding-top:45px}.services,.cards,.feature-grid,.insurance-grid{grid-template-columns:1fr}.section{padding:45px 0}.section-head{display:block}.route-controls{grid-template-columns:1fr}.route-result{grid-template-columns:1fr}.contact-strip{display:block}.contact-strip .btn{margin-top:12px}}
+
+.detail-page{min-height:100vh;background:linear-gradient(180deg,#080b0f,#0d1116)}
+.detail-wrap{width:min(1180px,92%);margin:auto;padding:35px 0 70px}
+.back{display:inline-flex;text-decoration:none;color:#aeb7c1;margin-bottom:18px}.detail-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:25px;align-items:start}
+.gallery{background:#0d1319;border:1px solid var(--line);border-radius:18px;overflow:hidden}.gallery-main{height:500px;display:grid;place-items:center;background:#10171e}.gallery-main img{width:100%;height:100%;object-fit:contain}.thumbs{display:flex;gap:8px;padding:10px;overflow:auto;border-top:1px solid var(--line)}.thumb{width:76px;height:60px;flex:0 0 auto;object-fit:cover;border-radius:8px;border:1px solid var(--line);cursor:pointer}.thumb.active{border:2px solid var(--gold)}
+.detail-info{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:25px}.detail-info h1{font-size:36px;line-height:1.05;margin:5px 0 12px}.detail-tag{display:inline-block;color:#111;background:var(--gold);font-size:10px;font-weight:950;border-radius:999px;padding:6px 9px}.detail-price{font-size:24px;color:var(--gold);font-weight:950;margin:18px 0}.specs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:18px 0}.spec{background:#0b1015;border:1px solid var(--line);border-radius:10px;padding:13px}.spec small{display:block;color:#7f8a96;font-size:10px}.spec b{display:block;margin-top:4px}.detail-desc{color:#aab4bf;line-height:1.8;white-space:pre-line}.detail-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.detail-section{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.count{color:#7f8a96;font-size:11px}
+@media(max-width:850px){.detail-grid{grid-template-columns:1fr}.gallery-main{height:360px}.detail-info h1{font-size:30px}}
+@media(max-width:520px){.detail-wrap{padding-top:22px}.gallery-main{height:260px}.specs{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -74,14 +82,16 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#7e8995;font-size:1
 const COMPANY={lat:37.33407974243164,lon:41.87986755371094};
 const $=id=>document.getElementById(id);
 function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function detailUrl(type,id){return `detail.html?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`}
 function card(x,type){
  let icon=type==="property"?"🏠":"🚗", tag=type==="rental"?"KİRALIK":type==="sale"?"SATILIK":"EMLAK";
- let image=x.image?`<img src="${esc(x.image)}" alt="${esc(x.title)}">`:icon;
+ let imgs=Array.isArray(x.images)?x.images:(x.image?[x.image]:[]);
+ let image=imgs[0]?`<img src="${esc(imgs[0])}" alt="${esc(x.title)}">`:icon;
  let meta=type==="property"
- ? [x.rooms,x.area,x.location].filter(Boolean).join(" • ")
+ ? [x.type,x.area?x.area+" m²":"",x.rooms,x.location].filter(Boolean).join(" • ")
  : [x.year,x.fuel,x.transmission,x.km?x.km+" km":""].filter(Boolean).join(" • ");
  let price=type==="rental"?`Günlük: ${esc(x.dailyPrice||"Bilgi için WhatsApp")}<br><small>Saatlik: ${esc(x.hourlyPrice||"Bilgi için WhatsApp")}</small>`:esc(x.price||"Fiyat bilgisi için iletişim");
- return `<article class="card"><div class="card-img">${image}<span class="tag">${tag}</span></div><div class="card-body"><h3>${esc(x.title)}</h3><div class="meta">${esc(meta)}</div><p class="desc">${esc(x.description||"Detaylı bilgi için bizimle iletişime geçin.")}</p><div class="price-row"><div class="price">${price}</div><a class="btn" target="_blank" href="https://wa.me/905447673310?text=${encodeURIComponent("Merhaba 501 Otomotiv, "+(x.title||"ilan")+" hakkında bilgi almak istiyorum.")}">Bilgi Al</a></div></div></article>`;
+ return `<article class="card"><a href="${detailUrl(type,x.id)}" style="text-decoration:none"><div class="card-img">${image}<span class="tag">${tag}</span></div></a><div class="card-body"><h3>${esc(x.title)}</h3><div class="meta">${esc(meta)}${imgs.length>1?` • 📷 ${imgs.length} fotoğraf`:""}</div><p class="desc">${esc(x.description||"Detaylı bilgi için ilanı açın.")}</p><div class="price-row"><div class="price">${price}</div><a class="btn primary" href="${detailUrl(type,x.id)}">Detayları Gör</a></div></div></article>`;
 }
 async function load(){
  try{
