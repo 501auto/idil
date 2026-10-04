@@ -25,7 +25,29 @@
       "image": ""
     }
   ],
-  "saleVehicles": [],
+  "saleVehicles": [
+    {
+      "id": "f77350bc-05e1-4652-92ef-6413ddd97e77",
+      "title": "Nisan qaşqai",
+      "description": "Aracım çok temizdir tek kullanım tekrar öğretmen aracıdır",
+      "year": "2020",
+      "km": "70000",
+      "fuel": "dizel",
+      "transmission": "6",
+      "price": "300000",
+      "image": "images/sale/f77350bc-05e1-4652-92ef-6413ddd97e77.jpeg"
+    },
+    {
+      "id": "1396b834-caad-4fbc-bb90-376546f1f7de",
+      "title": "Nisan qaşqai",
+      "description": "Aracım çok temizdir tek kullanım tekrar öğretmen aracıdır",
+      "year": "2020",
+      "km": "70000",
+      "fuel": "dizel",
+      "transmission": "6",
+      "price": "300000"
+    }
+  ],
   "properties": [],
   "insurance": {
     "title": "Sigorta Çözümleri",
@@ -38,5 +60,6 @@
       "Seyahat Sigortası",
       "Diğer Sigortalar"
     ]
-  }
+  },
+  "_sha": "43f007eefd8a02b60da3fa41338f4a908e60039e"
 }
