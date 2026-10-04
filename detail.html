@@ -1,46 +1,65 @@
 <!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>501 Otomotiv - İlan Detayı</title>
+<title>İlan Detayı | 501 Otomotiv</title>
 <meta name="description" content="501 Otomotiv İdil araç kiralama, satılık araç ve emlak ilanı detayları.">
-<style>
-:root{--bg:#080b0f;--panel:#11171e;--line:#29333e;--text:#f4f6f8;--muted:#9aa5b1;--gold:#f4b400}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-a{color:inherit}.top{height:68px;border-bottom:1px solid var(--line);background:#080b0fee;backdrop-filter:blur(12px);display:flex;align-items:center}.wrap{width:min(1180px,92%);margin:auto}.nav{display:flex;justify-content:space-between;align-items:center}.logo{text-decoration:none;font-weight:950}.logo b{color:var(--gold);font-size:27px}.logo span{font-size:11px;color:#aab3bd;margin-left:8px;letter-spacing:1.4px}.home{color:#aeb7c1;text-decoration:none;font-size:13px}
-.detail-wrap{padding:30px 0 70px}.back{display:inline-block;color:#aeb7c1;text-decoration:none;margin-bottom:18px}.detail-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}.gallery{background:#0e141a;border:1px solid var(--line);border-radius:18px;overflow:hidden}.main-photo{height:540px;display:grid;place-items:center;background:#10171e;position:relative}.main-photo img{width:100%;height:100%;object-fit:contain}.arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid #ffffff28;background:#0009;color:white;border-radius:50%;cursor:pointer;font-size:20px}.prev{left:12px}.next{right:12px}.thumbs{display:flex;gap:8px;padding:10px;overflow:auto;border-top:1px solid var(--line)}.thumb{width:82px;height:62px;object-fit:cover;flex:0 0 auto;border:2px solid transparent;border-radius:8px;cursor:pointer}.thumb.active{border-color:var(--gold)}
-.info{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:25px}.tag{display:inline-block;background:var(--gold);color:#111;padding:6px 9px;border-radius:999px;font-size:10px;font-weight:950}.info h1{font-size:38px;line-height:1.04;margin:13px 0}.price{color:var(--gold);font-size:25px;font-weight:950;margin:16px 0}.specs{display:grid;grid-template-columns:1fr 1fr;gap:9px}.spec{background:#0b1015;border:1px solid var(--line);border-radius:10px;padding:12px}.spec small{display:block;color:#7f8a96;font-size:10px}.spec b{display:block;margin-top:4px}.desc{color:#aab4bf;line-height:1.8;white-space:pre-line}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 15px;border:1px solid var(--line);border-radius:9px;text-decoration:none;font-weight:850}.primary{background:var(--gold);color:#111;border-color:var(--gold)}.foot{border-top:1px solid var(--line);margin-top:30px;padding-top:20px;color:#7f8a96;font-size:12px}
-.empty{padding:80px 20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
-@media(max-width:850px){.detail-grid{grid-template-columns:1fr}.main-photo{height:390px}.info h1{font-size:31px}}
-@media(max-width:520px){.main-photo{height:270px}.specs{grid-template-columns:1fr}}
-</style></head>
-<body>
-<header class="top"><div class="wrap nav"><a class="logo" href="index.html"><b>501</b><span>OTOMOTİV • RENT A CAR</span></a><a class="home" href="index.html">← Ana sayfaya dön</a></div></header>
-<main class="wrap detail-wrap"><a class="back" href="index.html">← İlanlara dön</a><div id="app"></div>
-<div class="foot">501 Otomotiv • Yukarı Mah. Cizre Bulvarı No:272, İdil / Şırnak • 0544 767 33 10</div></main>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head><body>
+<header class="top"><div class="wrap nav"><a class="logo" href="index.html"><b>501</b><span>OTOMOTİV</span></a><a class="btn sm" href="index.html">← Ana sayfa</a></div></header>
+<main class="wrap">
+<div class="crumbs"><a href="index.html">Ana sayfa</a> / <a id="crumbSection" href="index.html">İlanlar</a> / <span id="crumbTitle">…</span></div>
+<div id="app"></div>
+<section class="related" id="relatedBox" hidden><h2>Diğer ilanlar</h2><div class="track" id="related"></div></section>
+</main>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><button class="x" aria-label="Kapat" onclick="closeLb()">×</button><button class="arrow prev" aria-label="Önceki" onclick="move(-1)">‹</button><img id="lbImg" alt=""><button class="arrow next" aria-label="Sonraki" onclick="move(1)">›</button><span class="pager" id="lbPager"></span></div>
+<footer><div class="wrap footer-grid"><div>501 Otomotiv • Yukarı Mah. Cizre Bulvarı No:272, İdil / Şırnak</div><div><a href="tel:+905447673310">0544 767 33 10</a></div></div></footer>
 <script>
 const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-const p=new URLSearchParams(location.search), type=p.get("type"), id=p.get("id");
-let item=null, images=[], current=0;
-function key(){return type==="rental"?"rentalVehicles":type==="sale"?"saleVehicles":"properties"}
-function wa(){return "https://wa.me/905447673310?text="+encodeURIComponent("Merhaba 501 Otomotiv, "+(item?.title||"ilan")+" hakkında bilgi almak istiyorum.")}
+const q=new URLSearchParams(location.search),type=q.get("type")||"property",id=q.get("id");
+const KEYS={rental:"rentalVehicles",sale:"saleVehicles",property:"properties"};
+const LABEL={rental:"KİRALIK ARAÇ",sale:"SATILIK ARAÇ",property:"EMLAK"};
+const SECTION={rental:"#kiralama",sale:"#satilik",property:"#emlak"};
+let item=null,images=[],cur=0,all=[];
+const imgsOf=x=>Array.isArray(x?.images)?x.images:(x?.image?[x.image]:[]);
+const wa=()=>"https://wa.me/905447673310?text="+encodeURIComponent("Merhaba 501 Otomotiv, "+(item?.title||"ilan")+" hakkında bilgi almak istiyorum.");
 function render(){
- if(!item){document.title="İlan bulunamadı | 501 Otomotiv";document.querySelector("#app").innerHTML='<div class="empty"><h2>İlan bulunamadı</h2><p>Bu ilan kaldırılmış veya bağlantı geçersiz olabilir.</p></div>';return}
- document.title=(item.title||"İlan")+" | 501 Otomotiv";
- const tag=type==="rental"?"KİRALIK ARAÇ":type==="sale"?"SATILIK ARAÇ":"EMLAK";
- const specs=type==="property"
- ? [["Gayrimenkul",item.type],["Alan",item.area?item.area+" m²":""],["Oda",item.rooms],["Kat",item.floor],["Konum",item.location]]
- : [["Model yılı",item.year],["Kilometre",item.km?item.km+" km":""],["Yakıt",item.fuel],["Vites",item.transmission]];
- const price=type==="rental"?`Günlük: ${esc(item.dailyPrice||"Bilgi için WhatsApp")}<br><small>Saatlik: ${esc(item.hourlyPrice||"Bilgi için WhatsApp")}</small>`:esc(item.price||"Fiyat bilgisi için iletişim");
- document.querySelector("#app").innerHTML=`<div class="detail-grid">
- <section class="gallery"><div class="main-photo" id="main">${images.length?`<img src="${esc(images[0])}" alt="${esc(item.title)}">`:"<div style='font-size:80px'>"+(type==="property"?"🏠":"🚗")+"</div>"}${images.length>1?'<button class="arrow prev" onclick="move(-1)">‹</button><button class="arrow next" onclick="move(1)">›</button>':""}</div>
- <div class="thumbs">${images.map((im,i)=>`<img class="thumb ${i===0?"active":""}" src="${esc(im)}" onclick="show(${i})">`).join("")}</div></section>
- <section class="info"><span class="tag">${tag}</span><h1>${esc(item.title)}</h1><div class="price">${price}</div>
+ const app=document.getElementById("app");
+ document.getElementById("crumbSection").href="index.html"+SECTION[type];
+ if(!item){document.title="İlan bulunamadı | 501 Otomotiv";document.getElementById("crumbTitle").textContent="Bulunamadı";app.innerHTML='<div class="empty"><b>İlan bulunamadı</b>Bu ilan kaldırılmış olabilir. <a class="btn primary sm" style="margin-top:14px" href="index.html'+SECTION[type]+'">Tüm ilanlara dön</a></div>';return}
+ document.title=item.title+" | 501 Otomotiv";document.getElementById("crumbTitle").textContent=item.title;
+ const specs=type==="property"?[["Tür",item.type],["Alan",item.area?item.area+" m²":""],["Oda",item.rooms],["Kat",item.floor],["Konum",item.location]]:[["Model yılı",item.year],["Kilometre",item.km?item.km+" km":""],["Yakıt",item.fuel],["Vites",item.transmission]];
+ const price=type==="rental"?`Günlük: ${esc(item.dailyPrice||"Bilgi için arayın")}<small>Saatlik: ${esc(item.hourlyPrice||"Bilgi için arayın")}</small>`:esc(item.price||"Fiyat için iletişim");
+ const multi=images.length>1;
+ app.innerHTML=`<div class="detail-grid"><section class="gallery">
+ <div class="main-photo" id="main" onclick="openLb()">${images.length?`<img id="mainImg" src="${esc(images[0])}" alt="${esc(item.title)}">`:`<div class="noimg">${type==="property"?"🏠":"🚗"}</div>`}
+ ${multi?`<button class="arrow prev" aria-label="Önceki" onclick="event.stopPropagation();move(-1)">‹</button><button class="arrow next" aria-label="Sonraki" onclick="event.stopPropagation();move(1)">›</button>`:""}
+ ${images.length?`<span class="pager" id="pager">1 / ${images.length}</span>`:""}</div>
+ ${multi?`<div class="thumbs">${images.map((im,i)=>`<img class="thumb ${i?"":"active"}" loading="lazy" src="${esc(im)}" alt="Fotoğraf ${i+1}" onclick="show(${i})">`).join("")}</div>`:""}</section>
+ <aside class="info"><span class="tag" style="position:static;display:inline-block">${LABEL[type]}</span><h1>${esc(item.title)}</h1><div class="price">${price}</div>
  <div class="specs">${specs.filter(s=>s[1]).map(s=>`<div class="spec"><small>${esc(s[0])}</small><b>${esc(s[1])}</b></div>`).join("")}</div>
- <div class="detail-section"><h3>İlan hakkında</h3><p class="desc">${esc(item.description||"Detaylı bilgi için bizimle iletişime geçebilirsiniz.")}</p></div>
- <div class="actions"><a class="btn primary" href="${wa()}" target="_blank">💬 WhatsApp'tan Bilgi Al</a><a class="btn" href="tel:+905447673310">📞 0544 767 33 10</a></div>
- </section></div>`;
+ <h3>İlan hakkında</h3><p class="full">${esc(item.description||"Detaylı bilgi için bizimle iletişime geçebilirsiniz.")}</p>
+ <div class="actions"><a class="btn wa block" href="${wa()}" target="_blank" rel="noopener">💬 WhatsApp'tan bilgi al</a><a class="btn primary block" href="tel:+905447673310">📞 0544 767 33 10</a><button class="btn block" onclick="share()">🔗 İlanı paylaş</button></div></aside></div>`;
 }
-function show(i){current=i;const main=document.querySelector("#main");if(!main||!images.length)return;main.querySelector("img")?.remove();const im=document.createElement("img");im.src=images[i];im.alt=item.title||"";main.prepend(im);document.querySelectorAll(".thumb").forEach((x,n)=>x.classList.toggle("active",n===i))}
-function move(d){show((current+d+images.length)%images.length)}
-async function init(){try{const d=await fetch("data/site.json?"+Date.now()).then(r=>r.json());item=(d[key()]||[]).find(x=>x.id===id);images=Array.isArray(item?.images)?item.images:(item?.image?[item.image]:[]);render()}catch(e){document.querySelector("#app").innerHTML='<div class="empty">İlan bilgileri yüklenemedi.</div>'}}
-init();
+function show(i){
+ cur=i;const im=document.getElementById("mainImg");if(im)im.src=images[i];
+ const p=document.getElementById("pager");if(p)p.textContent=(i+1)+" / "+images.length;
+ document.querySelectorAll(".thumb").forEach((x,n)=>{x.classList.toggle("active",n===i);if(n===i)x.scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"})});
+ if(document.getElementById("lb").classList.contains("show"))lb();
+}
+function move(d){if(images.length>1)show((cur+d+images.length)%images.length)}
+function lb(){document.getElementById("lbImg").src=images[cur];document.getElementById("lbPager").textContent=(cur+1)+" / "+images.length}
+function openLb(){if(!images.length)return;lb();document.getElementById("lb").classList.add("show");document.body.style.overflow="hidden"}
+function closeLb(){document.getElementById("lb").classList.remove("show");document.body.style.overflow=""}
+async function share(){const u=location.href;try{if(navigator.share)await navigator.share({title:item.title,url:u});else{await navigator.clipboard.writeText(u);alert("Bağlantı kopyalandı.")}}catch(e){}}
+document.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")move(-1);if(e.key==="ArrowRight")move(1);if(e.key==="Escape")closeLb()});
+let sx=null;["lb","main"].forEach(i=>{const el=document.getElementById(i);el.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});el.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)move(dx<0?1:-1);sx=null})});
+document.getElementById("lb").addEventListener("click",e=>{if(e.target.id==="lb")closeLb()});
+function related(){
+ const o=all.filter(x=>x.id!==id).slice(0,10);if(!o.length)return;
+ document.getElementById("related").innerHTML=o.map(x=>{const im=imgsOf(x)[0],u=`detail.html?type=${type}&id=${encodeURIComponent(x.id)}`;
+ return `<article class="card"><a class="card-img" href="${u}">${im?`<img loading="lazy" src="${esc(im)}" alt="${esc(x.title)}">`:`<div class="noimg">${type==="property"?"🏠":"🚗"}</div>`}<span class="tag">${LABEL[type]}</span></a><div class="card-body"><h3>${esc(x.title)}</h3><a class="btn primary" href="${u}">Detayları gör</a></div></article>`}).join("");
+ document.getElementById("relatedBox").hidden=false;
+}
+(async()=>{try{const d=await fetch("data/site.json?"+Date.now()).then(r=>r.json());all=d[KEYS[type]]||[];item=all.find(x=>x.id===id);images=imgsOf(item);render();if(item)related()}catch(e){document.getElementById("app").innerHTML='<div class="empty"><b>İlan yüklenemedi</b>Sayfayı yenileyin.</div>'}})();
 </script></body></html>
